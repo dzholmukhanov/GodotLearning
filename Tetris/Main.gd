@@ -4,6 +4,7 @@ extends Node2D
 const Tetromino = preload("res://Tetrimino.gd")
 
 enum TetrominoType { I = 0, J = 1, L = 2, O = 3, S = 4, T = 5, Z = 6 }
+enum GameState { MENU, PLAY, LOST }
 var grid = []
 var grid_width = 10
 var grid_height = 15
@@ -11,6 +12,7 @@ var block_side = 48
 var block_inset = 3
 var active_block: Tetromino
 var score = 0
+var game_state = GameState.MENU
 
 func _ready():
 	randomize()
@@ -25,10 +27,10 @@ func _start_game():
 		for j in range(grid_width):
 			grid[i].push_back(0)
 	_spawn_block()
-	update()
+	game_state = GameState.PLAY
 
 func _end_game():
-	_start_game()
+	game_state = GameState.LOST
 	
 func _draw():
 	for i in range(grid_height):
@@ -62,6 +64,7 @@ func _draw_cell(i: int, j: int, occupation: int):
 	
 func _process(delta):
 	_process_controls()
+	update()
 
 func _spawn_block():
 	active_block = Tetromino.new(-1, 3, randi() % 7)
@@ -73,15 +76,19 @@ func _spawn_block():
 
 func _process_controls():
 	if $ControlTimer.is_stopped():
-		if Input.is_action_pressed("ui_right"):
-			if _can_block_move(0, 1): active_block.move(0, 1)
-		if Input.is_action_pressed("ui_left"):
-			if _can_block_move(0, -1): active_block.move(0, -1)
-		if Input.is_action_pressed("ui_down"):
-			if _can_block_move(1, 0): active_block.move(1, 0)
-		if Input.is_action_pressed("ui_select"):
-			if _can_block_turn(): active_block.turn()
-		update()
+		if game_state == GameState.PLAY:
+			if Input.is_action_pressed("ui_right"):
+				if _can_block_move(0, 1): active_block.move(0, 1)
+			if Input.is_action_pressed("ui_left"):
+				if _can_block_move(0, -1): active_block.move(0, -1)
+			if Input.is_action_pressed("ui_down"):
+				if _can_block_move(1, 0): active_block.move(1, 0)
+			if Input.is_action_pressed("ui_select"):
+				if _can_block_turn(): active_block.turn()
+		elif game_state == GameState.MENU:
+			if Input.is_action_just_pressed("ui_accept"):
+				_start_game()
+			
 		$ControlTimer.start()
 
 func _process_step():
@@ -97,7 +104,6 @@ func _process_step():
 		if not spawned:
 			_end_game()
 			return
-	update()
 
 func _can_block_move(di: int, dj: int):
 	var next_coords = active_block.get_next_occupied_coords(di, dj)
