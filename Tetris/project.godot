@@ -10,11 +10,29 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Reference",
+"class": "GameStates",
+"language": "GDScript",
+"path": "res://GameStates.gd"
+}, {
+"base": "Reference",
+"class": "TetrisLogic",
+"language": "GDScript",
+"path": "res://TetrisLogic.gd"
+}, {
+"base": "Reference",
+"class": "Tetromino",
+"language": "GDScript",
+"path": "res://Tetrimino.gd"
+}, {
+"base": "Reference",
 "class": "TetrominoType",
 "language": "GDScript",
 "path": "res://TetrominoType.gd"
 } ]
 _global_script_class_icons={
+"GameStates": "",
+"TetrisLogic": "",
+"Tetromino": "",
 "TetrominoType": ""
 }
 

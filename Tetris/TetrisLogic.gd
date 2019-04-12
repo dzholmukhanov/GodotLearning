@@ -1,60 +1,28 @@
-const Tetromino = preload("res://Tetrimino.gd")
+class_name TetrisLogic
 
-enum GameState { MENU, PLAY, LOST }
+signal score_changed
 
 var grid = []
 var grid_width = 10
 var grid_height = 15
-var block_side = 48
-var block_inset = 3
 var active_block: Tetromino
 var score = 0
-var game_state = GameState.MENU
+var game_state = GameStates.MENU
 
 func _init():
 	randomize()
-
-func start_game():
 	grid = []
 	for i in range(grid_height):
 		grid.push_back([])
 		for j in range(grid_width):
 			grid[i].push_back(0)
+
+func start_game():
 	_spawn_block()
-	game_state = GameState.PLAY
+	game_state = GameStates.PLAY
 
 func end_game():
-	game_state = GameState.LOST
-#
-#func _draw():
-#	for i in range(grid_height):
-#		for j in range(grid_width):
-#			_draw_cell(i, j, grid[i][j])
-#
-#	if (active_block == null): return
-#
-#	var block_coords = active_block.get_occupied_coords()
-#	for i in block_coords.size():
-#		if block_coords[i][0] >= 0:
-#			_draw_cell(block_coords[i][0], block_coords[i][1], 1)
-#
-#func _draw_cell(i: int, j: int, occupation: int):
-#	draw_rect(
-#		Rect2(Vector2(block_side * j, block_side * i),
-#	 	Vector2(block_side, block_side)), 
-#		Color.black,
-#		true) 
-#	draw_rect(
-#		Rect2(
-#			Vector2(
-#				block_side * j + block_inset, 
-#				block_side * i + block_inset),
-#	 		Vector2(
-#				block_side - block_inset, 
-#				block_side - block_inset)), 
-#		Color.darkgreen if occupation == 0 else Color.white, 
-#		true) 
-#
+	game_state = GameStates.LOST
 
 func _spawn_block():
 	active_block = Tetromino.new(-1, 3, randi() % 7)
@@ -78,6 +46,23 @@ func process_step():
 			if not spawned:
 				end_game()
 				return
+
+func move_left():
+	if can_block_move(0, -1) and game_state == GameStates.PLAY: 
+		active_block.move(0, -1)
+		
+func move_right():
+	if can_block_move(0, 1) and game_state == GameStates.PLAY: 
+		active_block.move(0, 1)
+		
+func move_down():
+	if can_block_move(1, 0) and game_state == GameStates.PLAY: 
+		active_block.move(1, 0)
+		
+func turn():
+	if can_block_turn() and game_state == GameStates.PLAY: 
+		active_block.turn()
+	
 
 func can_block_move(di: int, dj: int):
 	var next_coords = active_block.get_next_occupied_coords(di, dj)
@@ -110,6 +95,7 @@ func _check_for_filled_lines():
 			new_grid.push_front(grid[i])
 		else:
 			score = score + 1
+			emit_signal("score_changed")
 			
 	while new_grid.size() < grid_height:
 		new_grid.push_front([])

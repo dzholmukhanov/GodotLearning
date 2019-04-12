@@ -1,3 +1,5 @@
+class_name Tetromino
+
 var i: int
 var j: int
 var type: int

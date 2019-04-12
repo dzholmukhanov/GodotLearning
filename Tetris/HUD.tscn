@@ -33,6 +33,7 @@ autowrap = true
 uppercase = true
 
 [node name="MessageLabel" type="Label" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -240.0
@@ -46,6 +47,7 @@ autowrap = true
 uppercase = true
 
 [node name="ScoreLabel" type="Label" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -240.0
@@ -57,4 +59,7 @@ text = "10"
 align = 1
 autowrap = true
 uppercase = true
+
+[node name="MessageTimer" type="Timer" parent="."]
+one_shot = true
 
