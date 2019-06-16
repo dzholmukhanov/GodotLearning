@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Bullet.tscn" type="PackedScene" id=2]
+
+[sub_resource type="CylinderMesh" id=4]
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.756863, 0.180392, 0.180392, 1 )
+
+[sub_resource type="CubeMesh" id=3]
+
+[sub_resource type="CylinderShape" id=6]
+
+[node name="Enemy" type="KinematicBody"]
+script = ExtResource( 1 )
+Bullet = ExtResource( 2 )
+
+[node name="Mesh" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="PistolMesh" type="MeshInstance" parent="Mesh"]
+transform = Transform( 0.187304, 0, 0, 0, 0.187823, 0, 0, 0, 0.667232, 0.747419, 0.258885, -0.994888 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="BulletSpawn" type="Spatial" parent="Mesh"]
+transform = Transform( 0.187304, 0, 0, 0, 0.187823, 0, 0, 0, 0.667232, 0, 0.199, -2.09275 )
+
+[node name="Collision" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+shape = SubResource( 6 )
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+transform = Transform( 1.16764, 0, 0, 0, 1.61842, 0, 0, 0, 1.16764, 0, 1.47207, 0 )
+
+[node name="ProcessTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="screen_entered" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]
+[connection signal="timeout" from="ProcessTimer" to="." method="_on_ProcessTimer_timeout"]

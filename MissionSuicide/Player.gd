@@ -1,0 +1,97 @@
+extends KinematicBody
+
+export (PackedScene) var Bullet
+
+var gravity = -9.8
+var velocity = Vector3()
+var camera
+
+const SPEED = 15
+const ACCELERATION = 5
+const DE_ACCELERATION = 7
+const CAMERA_RAY_LENGTH = 1000
+const ROTATION_SPEED = 10
+
+func _ready():
+	camera = $Camera.get_global_transform()
+
+func _process(delta):
+	track_mouse(delta)
+
+func _physics_process(delta):
+	var dir = Vector3()
+	if (Input.is_action_pressed("move_fw")):
+ 		dir += -camera.basis.z
+	if (Input.is_action_pressed("move_bw")):
+		dir += camera.basis.z
+	if (Input.is_action_pressed("move_l")):
+		dir += -camera.basis.x
+	if (Input.is_action_pressed("move_r")):
+		dir += camera.basis.x
+	if (Input.is_action_just_pressed("shoot")):
+		shoot()
+	if (Input.is_action_just_pressed("pause")):
+		pause()
+
+	dir.y = 0
+	dir = dir.normalized()
+
+	var old_vel = velocity
+	old_vel.y = 0
+
+	var new_vel = dir * SPEED
+
+	var accel = DE_ACCELERATION
+	if (dir.dot(old_vel) > 0):
+		accel = ACCELERATION
+
+	var lerp_vel = old_vel.linear_interpolate(new_vel, accel * delta)
+	velocity.x = lerp_vel.x
+	velocity.z = lerp_vel.z
+	velocity.y += delta * gravity
+	velocity = move_and_slide(velocity, Vector3.UP)
+	
+#	if velocity.length() > 0.1:
+#		var rot = $Mesh.get_rotation()
+#		rot.y = atan2(lerp_vel.x, lerp_vel.z) - PI
+#		$Mesh.set_rotation(rot)
+	
+func shoot():
+	var bullet = Bullet.instance()
+	bullet.transform = $Mesh/BulletSpawn.get_global_transform()
+	bullet.set_scale(Vector3(1, 1, 1))
+	bullet.player = self
+	get_parent().add_child(bullet)
+	
+func pause():
+	if Game._is_playing():
+		Game.state = Game.PAUSED
+	elif Game._is_paused():
+		Game.state = Game.PLAYING
+
+func track_mouse(delta):
+	var cam = $Camera
+	var mousePos = get_viewport().get_mouse_position()
+	var from = cam.project_ray_origin(mousePos)
+	var to = from + cam.project_ray_normal(mousePos) * CAMERA_RAY_LENGTH
+	var space_state = get_world().direct_space_state
+	var hit = space_state.intersect_ray(from, to)
+	var hitPos = hit.get("position")
+	if hitPos != null:
+		var meshTrans = $Mesh.global_transform
+		hitPos.y = meshTrans.origin.y
+		var rotTrans = meshTrans.looking_at(hitPos, Vector3.UP)
+		var meshQuat = Quat(meshTrans.basis)
+		var slerpQuat = meshQuat.slerp(rotTrans.basis, delta * ROTATION_SPEED)
+		$Mesh.global_transform = Transform(
+			slerpQuat, 
+			meshTrans.origin)
+	
+	
+	
+	
+	
+	
+	
+	
+	
