@@ -7,11 +7,50 @@ const WON = 3
 const LOST = 4
 
 var state
+var enemies_cnt
+
+signal paused
+signal resumed
+signal lost
+signal won
 
 func _ready():
+	restart()
+	var enemies = get_tree().get_nodes_in_group("Enemies")
+	enemies_cnt = enemies.size()
+	
+func _process(delta):
+	print_debug(enemies_cnt)
+	
+func restart():
 	state = PLAYING
-
-func _is_paused():
+	
+func is_paused():
 	return state == PAUSED
-func _is_playing():
+func is_playing():
 	return state == PLAYING
+
+func pause():
+	if state == PLAYING:
+		state = PAUSED
+		emit_signal("paused")
+		
+func resume():
+	if state == PAUSED:
+		state = PLAYING
+		emit_signal("resumed")
+		
+func lost():
+	if state == PLAYING:
+		state = LOST
+		emit_signal("lost")
+
+func won():
+	if state == PLAYING:
+		state = WON
+		emit_signal("won")
+
+func enemy_died():
+	enemies_cnt -= 1
+	if enemies_cnt == 0:
+		won()

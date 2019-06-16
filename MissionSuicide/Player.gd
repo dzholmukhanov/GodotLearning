@@ -19,55 +19,51 @@ func _process(delta):
 	track_mouse(delta)
 
 func _physics_process(delta):
-	var dir = Vector3()
-	if (Input.is_action_pressed("move_fw")):
- 		dir += -camera.basis.z
-	if (Input.is_action_pressed("move_bw")):
-		dir += camera.basis.z
-	if (Input.is_action_pressed("move_l")):
-		dir += -camera.basis.x
-	if (Input.is_action_pressed("move_r")):
-		dir += camera.basis.x
-	if (Input.is_action_just_pressed("shoot")):
-		shoot()
-	if (Input.is_action_just_pressed("pause")):
-		pause()
-
-	dir.y = 0
-	dir = dir.normalized()
-
-	var old_vel = velocity
-	old_vel.y = 0
-
-	var new_vel = dir * SPEED
-
-	var accel = DE_ACCELERATION
-	if (dir.dot(old_vel) > 0):
-		accel = ACCELERATION
-
-	var lerp_vel = old_vel.linear_interpolate(new_vel, accel * delta)
-	velocity.x = lerp_vel.x
-	velocity.z = lerp_vel.z
-	velocity.y += delta * gravity
-	velocity = move_and_slide(velocity, Vector3.UP)
+	if Game.is_paused() or Game.is_playing():
+		var dir = Vector3()
+		if (Input.is_action_pressed("move_fw")):
+	 		dir += -camera.basis.z
+		if (Input.is_action_pressed("move_bw")):
+			dir += camera.basis.z
+		if (Input.is_action_pressed("move_l")):
+			dir += -camera.basis.x
+		if (Input.is_action_pressed("move_r")):
+			dir += camera.basis.x
+		if (Input.is_action_just_pressed("shoot")):
+			shoot()
+		if (Input.is_action_just_pressed("pause")):
+			pause()
 	
-#	if velocity.length() > 0.1:
-#		var rot = $Mesh.get_rotation()
-#		rot.y = atan2(lerp_vel.x, lerp_vel.z) - PI
-#		$Mesh.set_rotation(rot)
+		dir.y = 0
+		dir = dir.normalized()
+	
+		var old_vel = velocity
+		old_vel.y = 0
+	
+		var new_vel = dir * SPEED
+	
+		var accel = DE_ACCELERATION
+		if (dir.dot(old_vel) > 0):
+			accel = ACCELERATION
+	
+		var lerp_vel = old_vel.linear_interpolate(new_vel, accel * delta)
+		velocity.x = lerp_vel.x
+		velocity.z = lerp_vel.z
+		velocity.y += delta * gravity
+		velocity = move_and_slide(velocity, Vector3.UP)
 	
 func shoot():
 	var bullet = Bullet.instance()
 	bullet.transform = $Mesh/BulletSpawn.get_global_transform()
 	bullet.set_scale(Vector3(1, 1, 1))
-	bullet.player = self
+	bullet.is_player_bullet = true
 	get_parent().add_child(bullet)
 	
 func pause():
-	if Game._is_playing():
-		Game.state = Game.PAUSED
-	elif Game._is_paused():
-		Game.state = Game.PLAYING
+	if Game.is_playing():
+		Game.pause()
+	elif Game.is_paused():
+		Game.resume()
 
 func track_mouse(delta):
 	var cam = $Camera
@@ -87,6 +83,9 @@ func track_mouse(delta):
 			slerpQuat, 
 			meshTrans.origin)
 	
+func receive_damage():
+	Game.lost()
+	$Mesh.visible = false
 	
 	
 	

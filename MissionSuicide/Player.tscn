@@ -3,23 +3,25 @@
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=2]
 
-[sub_resource type="CylinderMesh" id=5]
+[sub_resource type="CylinderMesh" id=1]
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.164706, 0.776471, 0.376471, 1 )
 
 [sub_resource type="CubeMesh" id=3]
 
-[sub_resource type="CylinderShape" id=7]
+[sub_resource type="CylinderShape" id=4]
 
-[node name="Player" type="KinematicBody"]
+[node name="Player" type="KinematicBody" groups=[
+"Player",
+]]
 script = ExtResource( 1 )
 Bullet = ExtResource( 2 )
 
 [node name="Mesh" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
-mesh = SubResource( 5 )
-material/0 = SubResource( 6 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
 
 [node name="PistolMesh" type="MeshInstance" parent="Mesh"]
 transform = Transform( 0.187304, 0, 0, 0, 0.187823, 0, 0, 0, 0.667232, 0.747954, -0.0735486, -0.937896 )
@@ -31,7 +33,7 @@ transform = Transform( 0.187304, 0, 0, 0, 0.187823, 5.09096e-021, 0, 0, 0.667232
 
 [node name="Collision" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
-shape = SubResource( 7 )
+shape = SubResource( 4 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -4.37114e-008, 0.258819, -0.965926, 0, 0.965926, 0.258819, 1, 1.13133e-008, -4.2222e-008, -16, 12, 0 )
