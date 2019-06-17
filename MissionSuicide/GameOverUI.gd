@@ -6,9 +6,9 @@ func _ready():
 
 func _on_lost():
 	$ParentControl.visible = true
+	$AnimationPlayer.play("FadeIn")
 
 func _on_NewGameBtn_pressed():
-	Game.restart()
 	get_tree().reload_current_scene()
 
 func _on_QuitBtn_pressed():

@@ -16,7 +16,7 @@ func _ready():
 	camera = $Camera.get_global_transform()
 
 func _process(delta):
-	track_mouse(delta)
+	pass
 
 func _physics_process(delta):
 	if Game.is_paused() or Game.is_playing():
@@ -51,6 +51,7 @@ func _physics_process(delta):
 		velocity.z = lerp_vel.z
 		velocity.y += delta * gravity
 		velocity = move_and_slide(velocity, Vector3.UP)
+		track_mouse(delta)
 	
 func shoot():
 	var bullet = Bullet.instance()

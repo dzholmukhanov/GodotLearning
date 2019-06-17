@@ -1,6 +1,58 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://GameOverUI.gd" type="Script" id=1]
+[ext_resource path="res://fonts/noir/NoirStd-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/noir/Noir/NoirStd-SemiBoldItalic.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "FadeIn"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ParentControl/GameOverLbl:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 185.5, 191.5 ), Vector2( 395.5, 191.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ParentControl/GameOverLbl:custom_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ParentControl/VBoxContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [node name="GameOverUI" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -15,31 +67,48 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.145098 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ParentControl"]
-margin_left = 355.0
-margin_top = 244.0
-margin_right = 654.0
-margin_bottom = 373.0
-
-[node name="GameOverLbl" type="Label" parent="ParentControl/VBoxContainer"]
-margin_right = 299.0
-margin_bottom = 14.0
-text = "game over"
-align = 1
-valign = 1
-autowrap = true
-uppercase = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -149.5
+margin_top = -23.0
+margin_right = 149.5
+margin_bottom = 23.0
 
 [node name="NewGameBtn" type="Button" parent="ParentControl/VBoxContainer"]
-margin_top = 18.0
 margin_right = 299.0
-margin_bottom = 38.0
+margin_bottom = 23.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 text = "NEW GAME"
 
 [node name="QuitBtn" type="Button" parent="ParentControl/VBoxContainer"]
-margin_top = 42.0
+margin_top = 27.0
 margin_right = 299.0
-margin_bottom = 62.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 text = "QUIT"
+
+[node name="GameOverLbl" type="Label" parent="ParentControl"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -116.5
+margin_top = -108.5
+margin_right = 116.5
+margin_bottom = -67.4997
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "game over"
+uppercase = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FadeIn = SubResource( 2 )
 
 [connection signal="pressed" from="ParentControl/VBoxContainer/NewGameBtn" to="." method="_on_NewGameBtn_pressed"]
 [connection signal="pressed" from="ParentControl/VBoxContainer/QuitBtn" to="." method="_on_QuitBtn_pressed"]

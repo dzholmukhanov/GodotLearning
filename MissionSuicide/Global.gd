@@ -15,15 +15,16 @@ signal lost
 signal won
 
 func _ready():
-	restart()
-	var enemies = get_tree().get_nodes_in_group("Enemies")
-	enemies_cnt = enemies.size()
+	pass
 	
 func _process(delta):
-	print_debug(enemies_cnt)
+#	print_debug(enemies_cnt)
+	pass
 	
 func restart():
 	state = PLAYING
+	var enemies = get_tree().get_nodes_in_group("Enemies")
+	enemies_cnt = enemies.size()
 	
 func is_paused():
 	return state == PAUSED
