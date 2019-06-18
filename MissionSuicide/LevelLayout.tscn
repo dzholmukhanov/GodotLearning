@@ -1,0 +1,246 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://assets/prefabs/P_Fusebox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/prefabs/P_Building_04.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/prefabs/P_Floor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/prefabs/P_Fence_01.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/prefabs/P_Lamp.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/prefabs/P_Building_01.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/prefabs/P_Building_03.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/prefabs/P_Building_02.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/prefabs/P_Building_06.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/prefabs/P_Trashcan_02.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/prefabs/P_Trashcan_01.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/materials/M_Wall_Red.tres" type="Material" id=12]
+[ext_resource path="res://images/childrens_hospital_2k.hdr" type="Texture" id=13]
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 41.1754, 1, 195.023 )
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="PanoramaSky" id=3]
+resource_local_to_scene = true
+radiance_size = 0
+panorama = ExtResource( 13 )
+
+[sub_resource type="Environment" id=4]
+background_mode = 3
+background_sky = SubResource( 3 )
+background_color = Color( 0.917647, 0.858824, 0.858824, 1 )
+ambient_light_color = Color( 1, 0.717647, 0.529412, 1 )
+ambient_light_energy = 1.95
+fog_color = Color( 0.780392, 0.87451, 0.545098, 1 )
+fog_depth_begin = 40.0
+fog_depth_end = 100.0
+fog_depth_curve = 0.683021
+fog_height_enabled = true
+tonemap_mode = 2
+ss_reflections_enabled = true
+ssao_enabled = true
+ssao_radius = 0.3
+ssao_intensity = 2.5
+ssao_intensity2 = 10.6
+ssao_bias = 0.05
+glow_enabled = true
+glow_intensity = 0.1
+glow_bloom = 0.05
+adjustment_enabled = true
+adjustment_saturation = 1.25
+
+[node name="Scene Root" type="Spatial"]
+
+[node name="Environment" type="Spatial" parent="."]
+
+[node name="Fusebox" parent="Environment" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -22.4092, 9.53674e-007, 73.4107 )
+
+[node name="Fusebox2" parent="Environment" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.2809, 9.53674e-007, 67.815 )
+
+[node name="Spatial10" parent="Environment" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, -36.308, 0, 126.012 )
+
+[node name="Floor" parent="Environment" instance=ExtResource( 3 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0495682, 0.0637054, 149.932 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Environment/Floor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3558, -0.827019, -178.075 )
+shape = SubResource( 5 )
+
+[node name="Fences_01" type="Spatial" parent="Environment"]
+editor/display_folded = true
+transform = Transform( 1, 0, 1.74846e-007, 0, 1, 0, -1.74846e-007, 0, 1, -10.0606, 0, 68.8845 )
+
+[node name="Scene Root6" parent="Environment/Fences_01" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, -5, 0, 15 )
+
+[node name="Scene Root9" parent="Environment/Fences_01" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90735e-006, 0, 14 )
+
+[node name="Scene Root12" parent="Environment/Fences_01" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.53674e-007, 0, 8 )
+
+[node name="Scene Root16" parent="Environment/Fences_01" instance=ExtResource( 4 )]
+
+[node name="Scene Root7" parent="Environment/Fences_01" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, -3, 0, 15 )
+
+[node name="Scene Root10" parent="Environment/Fences_01" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90735e-006, 0, 12 )
+
+[node name="Scene Root13" parent="Environment/Fences_01" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.53674e-007, 0, 6 )
+
+[node name="Scene Root8" parent="Environment/Fences_01" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, -1, 0, 15 )
+
+[node name="Scene Root11" parent="Environment/Fences_01" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.53674e-007, 0, 10 )
+
+[node name="Scene Root18" parent="Environment/Fences_01" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+
+[node name="Scene Root14" parent="Environment/Fences_01" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="Lamps" type="Spatial" parent="Environment"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5357, 0, 112.563 )
+
+[node name="Scene Root3" parent="Environment/Lamps" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, 35.9941 )
+
+[node name="Scene Root11" parent="Environment/Lamps" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, 41.9941 )
+
+[node name="Scene Root4" parent="Environment/Lamps" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, 29.9941 )
+
+[node name="Scene Root5" parent="Environment/Lamps" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, 23.9941 )
+
+[node name="Scene Root6" parent="Environment/Lamps" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, 17.9941 )
+
+[node name="Scene Root7" parent="Environment/Lamps" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, 11.9941 )
+
+[node name="Scene Root8" parent="Environment/Lamps" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, 5.99415 )
+
+[node name="Scene Root9" parent="Environment/Lamps" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, -0.00585175 )
+
+[node name="Lamps2" type="Spatial" parent="Environment"]
+editor/display_folded = true
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, -10.5357, 0, 112.563 )
+
+[node name="Scene Root3" parent="Environment/Lamps2" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, 35.9941 )
+
+[node name="Scene Root11" parent="Environment/Lamps2" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, 41.9941 )
+
+[node name="Scene Root4" parent="Environment/Lamps2" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, 29.9941 )
+
+[node name="Scene Root5" parent="Environment/Lamps2" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, 23.9941 )
+
+[node name="Scene Root6" parent="Environment/Lamps2" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, 17.9941 )
+
+[node name="Scene Root7" parent="Environment/Lamps2" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, 11.9941 )
+
+[node name="Scene Root8" parent="Environment/Lamps2" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, 5.99415 )
+
+[node name="Scene Root9" parent="Environment/Lamps2" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, -0.00585175 )
+
+[node name="Spatial" parent="Environment" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, -83.2758, 0, 87.273 )
+
+[node name="Spatial2" parent="Environment" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, -83.2758, 0, 101.273 )
+
+[node name="Spatial3" parent="Environment" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, -83.2758, 0, 115.273 )
+
+[node name="Spatial4" parent="Environment" instance=ExtResource( 7 )]
+transform = Transform( -0.972515, 0, 0.232839, 0, 1, 0, -0.232839, 0, -0.972515, -63.5745, 0, 121.878 )
+
+[node name="Spatial9" parent="Environment" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 1.74846e-007, 0, 1, 0, -1.74846e-007, 0, 1, -21.3734, 0, 78.8784 )
+
+[node name="Spatial5" parent="Environment" instance=ExtResource( 8 )]
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, -36.8452, 0, 73.786 )
+
+[node name="Spatial6" parent="Environment" instance=ExtResource( 8 )]
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, -36.8452, 0, 50.786 )
+
+[node name="Spatial7" parent="Environment" instance=ExtResource( 8 )]
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, -33.7419, 0, 24.786 )
+
+[node name="Spatial8" parent="Environment" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -61.38, 0, 75.508 )
+
+[node name="Trashcan_02" parent="Environment" instance=ExtResource( 10 )]
+transform = Transform( 0.887355, 0, 0.461086, 0, 1, 0, -0.461086, 0, 0.887355, -15.316, 0.137319, 77.31 )
+
+[node name="Trashcan_01" parent="Environment" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4441, 0, 78.053 )
+
+[node name="Lamps3" type="Spatial" parent="Environment"]
+editor/display_folded = true
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, -4.90825, 0, 89.1258 )
+
+[node name="Scene Root3" parent="Environment/Lamps3" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, 35.9941 )
+
+[node name="Scene Root11" parent="Environment/Lamps3" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, 41.9941 )
+
+[node name="Scene Root4" parent="Environment/Lamps3" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, 29.9941 )
+
+[node name="Scene Root5" parent="Environment/Lamps3" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, 23.9941 )
+
+[node name="Scene Root6" parent="Environment/Lamps3" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, 17.9941 )
+
+[node name="Scene Root7" parent="Environment/Lamps3" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, 11.9941 )
+
+[node name="Scene Root8" parent="Environment/Lamps3" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, 5.99415 )
+
+[node name="Scene Root9" parent="Environment/Lamps3" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0118036, 0.174428, -0.00585175 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Environment"]
+transform = Transform( 9.2, 0, 0, 0, 9.2, 0, 0, 0, 18.216, -34.9171, 9, 145.508 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 12 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="Environment"]
+transform = Transform( 21.16, 0, 0, 0, 9.2, 0, 0, 0, 18.216, -73.9171, 9, 147.508 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 12 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Environment"]
+transform = Transform( 9.2, 0, 0, 0, 16.1, 0, 0, 0, 45.1757, -106.917, 11, 102.508 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 12 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.65978, -0.580345, 0.477378, 0, 0.635268, 0.772292, -0.751458, -0.509543, 0.419137, 0, 32.3276, 97.5948 )
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 4 )
+

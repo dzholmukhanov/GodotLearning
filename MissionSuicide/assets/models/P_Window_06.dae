@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.80.74 commit date:2019-06-16, commit time:23:08, hash:12da679fa094</authoring_tool>
+    </contributor>
+    <created>2019-06-18T09:52:14</created>
+    <modified>2019-06-18T09:52:14</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="Window-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.3601964 0.6306804 1 1</color>
+            </diffuse>
+            <shininess>
+              <float sid="shininess">0</float>
+            </shininess>
+            <reflectivity>
+              <float sid="specular">0</float>
+            </reflectivity>
+            <transparency>
+              <float sid="alpha">1</float>
+            </transparency>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="Metal-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.2154755 0.2154755 0.2154755 1</color>
+            </diffuse>
+            <shininess>
+              <float sid="shininess">0.4272727</float>
+            </shininess>
+            <reflectivity>
+              <float sid="specular">0.8272727</float>
+            </reflectivity>
+            <transparency>
+              <float sid="alpha">1</float>
+            </transparency>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images/>
+  <library_materials>
+    <material id="Window-material" name="Window">
+      <instance_effect url="#Window-effect"/>
+    </material>
+    <material id="Metal-material" name="Metal">
+      <instance_effect url="#Metal-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="Plane_015-mesh" name="Plane.015">
+      <mesh>
+        <source id="Plane_015-mesh-positions">
+          <float_array id="Plane_015-mesh-positions-array" count="48">0.0496971 -3.032557 2.665113 0.04969733 -3.032557 0 0.0496971 3.032557 2.665113 0.04969733 3.032557 0 -0.04969763 -3.032557 2.665113 -0.04969739 -3.032557 0 -0.04969763 3.032557 2.665113 -0.04969739 3.032557 0 0.0496971 -2.967444 2.6 0.0496971 2.967444 2.6 0.04969733 2.967444 0.06511306 0.04969733 -2.967444 0.06511306 -0.04331505 2.967444 2.6 -0.04331505 -2.967444 2.6 -0.04331481 -2.967444 0.06511306 -0.04331481 2.967444 0.06511306</float_array>
+          <technique_common>
+            <accessor source="#Plane_015-mesh-positions-array" count="16" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Plane_015-mesh-normals">
+          <float_array id="Plane_015-mesh-normals-array" count="78">0 0 1 0 0 -1 0 1 1.57114e-7 0 1 -2.1572e-7 0 1 1.66404e-7 0 -1 2.25009e-7 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 -1 0 0 1 -2.25009e-7 0 -1 -1.66404e-7 1 0 0 0 1 0 0 -1 0</float_array>
+          <technique_common>
+            <accessor source="#Plane_015-mesh-normals-array" count="26" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Plane_015-mesh-map-0">
+          <float_array id="Plane_015-mesh-map-0-array" count="156">0.9499131 0.9689939 0.949913 0.03100615 0.9499131 0.9689939 1 0 1 1 1 0 0 1 0 0 0 1 1 1 0 1 1 1 0 0 1 0 1 0 0.05008685 0.03100615 0 1 0 0 0.05008685 0.9689939 1 1 0 1 0.9499131 0.9689939 1 0 1 1 0.949913 0.03100615 0 0 1 0 0.949913 0.03100615 0.05008685 0.9689939 0.05008685 0.03100615 0.949913 0.03100615 0.05008685 0.03100615 0.949913 0.03100615 0.05008685 0.9689939 0.9499131 0.9689939 0.05008685 0.9689939 0.05008685 0.03100615 0.05008685 0.9689939 0.05008685 0.03100615 0.9499131 0.9689939 0.949913 0.03100615 0.949913 0.03100615 1 0 1 1 1 1 0 1 0 0 0 0 1 1 0 1 0 1 0 0 0 0 1 0 0.05008685 0.03100615 0.05008685 0.9689939 0 1 0.05008685 0.9689939 0.9499131 0.9689939 1 1 0.9499131 0.9689939 0.949913 0.03100615 1 0 0.949913 0.03100615 0.05008685 0.03100615 0 0 0.949913 0.03100615 0.9499131 0.9689939 0.05008685 0.9689939 0.949913 0.03100615 0.05008685 0.03100615 0.05008685 0.03100615 0.05008685 0.9689939 0.9499131 0.9689939 0.9499131 0.9689939 0.05008685 0.03100615 0.05008685 0.9689939 0.05008685 0.9689939</float_array>
+          <technique_common>
+            <accessor source="#Plane_015-mesh-map-0-array" count="78" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Plane_015-mesh-vertices">
+          <input semantic="POSITION" source="#Plane_015-mesh-positions"/>
+        </vertices>
+        <triangles material="Window-material" count="2">
+          <input semantic="VERTEX" source="#Plane_015-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Plane_015-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Plane_015-mesh-map-0" offset="2" set="0"/>
+          <p>14 14 27 12 14 28 13 14 29 14 14 66 15 23 67 12 14 68</p>
+        </triangles>
+        <triangles material="Metal-material" count="24">
+          <input semantic="VERTEX" source="#Plane_015-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Plane_015-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Plane_015-mesh-map-0" offset="2" set="0"/>
+          <p>15 0 0 11 0 1 10 0 2 5 1 3 3 1 4 1 1 5 6 0 6 0 0 7 2 0 8 7 2 9 2 3 10 3 4 11 0 5 12 5 5 13 1 5 14 8 6 15 2 7 16 0 8 17 9 9 18 3 10 19 2 7 20 10 11 21 1 12 22 3 10 23 11 13 24 0 8 25 1 12 26 14 15 30 8 16 31 11 17 32 12 18 33 10 19 34 9 20 35 13 1 36 9 1 37 8 1 38 15 0 39 14 0 40 11 0 41 5 1 42 7 1 43 3 1 44 6 0 45 4 0 46 0 0 47 7 2 48 6 21 49 2 3 50 0 22 51 4 22 52 5 22 53 8 6 54 9 9 55 2 7 56 9 9 57 10 11 58 3 10 59 10 11 60 11 13 61 1 12 62 11 13 63 8 6 64 0 8 65 14 15 69 13 24 70 8 16 71 12 18 72 15 25 73 10 19 74 13 1 75 12 1 76 9 1 77</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Window_06" name="Window_06" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#Plane_015-mesh" name="Window_06">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Window-material" target="#Window-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="Metal-material" target="#Metal-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

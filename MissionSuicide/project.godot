@@ -59,4 +59,6 @@ pause={
 
 [rendering]
 
+quality/driver/fallback_to_gles2=true
+quality/filters/msaa=1
 environment/default_environment="res://default_env.tres"
