@@ -125,5 +125,6 @@ color = Color( 0.0509804, 0.117647, 0.160784, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/FadeIn = SubResource( 3 )
+
 [connection signal="pressed" from="VBoxContainer/NewGameBtn" to="." method="_on_NewGameBtn_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitBtn" to="." method="_on_QuitBtn_pressed"]
