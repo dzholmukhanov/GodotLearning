@@ -1,6 +1,7 @@
 extends KinematicBody
 
 export (PackedScene) var Bullet
+export (PackedScene) var Gunfire
 
 var gravity = -9.8
 var velocity = Vector3()
@@ -60,6 +61,13 @@ func shoot():
 	bullet.is_player_bullet = true
 	get_parent().add_child(bullet)
 	
+	var fire = Gunfire.instance()
+	fire.transform = $Mesh/PistolMesh/EmitterSpawn.get_global_transform()
+	fire.set_scale(Vector3(1, 1, 1))
+	get_parent().add_child(fire)
+	fire.emit()
+	
+	
 func pause():
 	if Game.is_playing():
 		Game.pause()
@@ -95,3 +103,7 @@ func receive_damage():
 	
 	
 	
+
+func _on_FireTimer_timeout():
+#	$Mesh/PistolMesh/Fire.visible = false
+	pass
