@@ -16,12 +16,14 @@ albedo_color = Color( 0.164706, 0.776471, 0.376471, 1 )
 [node name="Player" type="KinematicBody" groups=[
 "Player",
 ]]
+collision_layer = 3
 script = ExtResource( 1 )
 Bullet = ExtResource( 2 )
 Gunfire = ExtResource( 3 )
 
 [node name="Mesh" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+editor/display_folded = true
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.850774, 0 )
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
 
@@ -37,10 +39,9 @@ transform = Transform( 1, 0, 0, 0, 1, 2.71051e-020, 0, 0, 1, 0, 0, -1.4105 )
 transform = Transform( 0.187304, 0, 0, 0, 0.187823, 5.09096e-021, 0, 0, 0.667232, 0, -0.074, -2.32581 )
 
 [node name="Collision" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.841883, 0 )
 shape = SubResource( 4 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -4.37114e-008, -0.258819, 0.965926, 0, 0.965926, 0.258819, -1, 1.13133e-008, -4.2222e-008, 13, 6, 0 )
-fov = 50.0
 

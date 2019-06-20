@@ -11,11 +11,15 @@ var player
 const ROTATION_SPEED = 5
 
 func _ready():
+	rand_seed(1)
 	player = get_tree().get_root().find_node("Player", true, false)
+	$ProcessTimer.start(rand_range(0.05, 1))
+	
 
 func _process(delta):
 	if Game.is_playing() and on_screen:
 		var meshTrans = $Mesh.global_transform
+		var scale = $Mesh.scale
 		var plrPos = player.transform.origin
 		plrPos.y = meshTrans.origin.y
 		var rotTrans = meshTrans.looking_at(plrPos, Vector3.UP)
@@ -24,6 +28,7 @@ func _process(delta):
 		$Mesh.global_transform = Transform(
 			slerpQuat, 
 			meshTrans.origin)
+		$Mesh.scale = scale
 
 func _on_ProcessTimer_timeout():
 	if Game.is_playing() and on_screen:
@@ -47,11 +52,15 @@ func shoot():
 	fire.emit()
 	
 func _on_VisibilityNotifier_screen_entered():
-	on_screen = true
+	$ReactionTimer.start()
 
 func _on_VisibilityNotifier_screen_exited():
+	$ReactionTimer.stop()
 	on_screen = false
 
 func receive_damage():
 	Game.enemy_died()
 	queue_free()
+
+func _on_ReactionTimer_timeout():
+	on_screen = true

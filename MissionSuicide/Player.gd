@@ -34,6 +34,8 @@ func _physics_process(delta):
 			shoot()
 		if (Input.is_action_just_pressed("pause")):
 			pause()
+		if (Input.is_action_just_pressed("win")):
+			Game.won()
 	
 		dir.y = 0
 		dir = dir.normalized()
@@ -55,18 +57,18 @@ func _physics_process(delta):
 		track_mouse(delta)
 	
 func shoot():
-	var bullet = Bullet.instance()
-	bullet.transform = $Mesh/BulletSpawn.get_global_transform()
-	bullet.set_scale(Vector3(1, 1, 1))
-	bullet.is_player_bullet = true
-	get_parent().add_child(bullet)
-	
-	var fire = Gunfire.instance()
-	fire.transform = $Mesh/PistolMesh/EmitterSpawn.get_global_transform()
-	fire.set_scale(Vector3(1, 1, 1))
-	get_parent().add_child(fire)
-	fire.emit()
-	
+	if Game.shoot() or Game.is_paused():
+		var bullet = Bullet.instance()
+		bullet.transform = $Mesh/BulletSpawn.get_global_transform()
+		bullet.set_scale(Vector3(1, 1, 1))
+		bullet.is_player_bullet = true
+		get_parent().add_child(bullet)
+		
+		var fire = Gunfire.instance()
+		fire.transform = $Mesh/PistolMesh/EmitterSpawn.get_global_transform()
+		fire.set_scale(Vector3(1, 1, 1))
+		get_parent().add_child(fire)
+		fire.emit()
 	
 func pause():
 	if Game.is_playing():
@@ -80,10 +82,11 @@ func track_mouse(delta):
 	var from = cam.project_ray_origin(mousePos)
 	var to = from + cam.project_ray_normal(mousePos) * CAMERA_RAY_LENGTH
 	var space_state = get_world().direct_space_state
-	var hit = space_state.intersect_ray(from, to)
+	var hit = space_state.intersect_ray(from, to, [], 1)
 	var hitPos = hit.get("position")
 	if hitPos != null:
 		var meshTrans = $Mesh.global_transform
+		var scale = $Mesh.scale
 		hitPos.y = meshTrans.origin.y
 		var rotTrans = meshTrans.looking_at(hitPos, Vector3.UP)
 		var meshQuat = Quat(meshTrans.basis)
@@ -91,6 +94,7 @@ func track_mouse(delta):
 		$Mesh.global_transform = Transform(
 			slerpQuat, 
 			meshTrans.origin)
+		$Mesh.scale = scale
 	
 func receive_damage():
 	Game.lost()

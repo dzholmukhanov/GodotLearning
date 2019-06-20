@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://LevelLayout.gd" type="Script" id=1]
 [ext_resource path="res://assets/prefabs/P_Fusebox.tscn" type="PackedScene" id=2]
@@ -30,6 +30,12 @@
 [ext_resource path="res://assets/prefabs/P_Building_05.tscn" type="PackedScene" id=28]
 [ext_resource path="res://assets/models/S_Fountain.dae" type="PackedScene" id=29]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=30]
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=31]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=32]
+[ext_resource path="res://GameOverUI.tscn" type="PackedScene" id=33]
+[ext_resource path="res://PauseUI.tscn" type="PackedScene" id=34]
+[ext_resource path="res://VictoryUI.tscn" type="PackedScene" id=35]
+[ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=36]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 41.1754, 1, 195.023 )
@@ -113,6 +119,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.851, 0.186426, 70.2409 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23652, 0.186426, 4.03503 )
 
 [node name="Floor" parent="Environment" instance=ExtResource( 9 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0495682, 0.0637054, 149.932 )
 
 [node name="StaticBody" type="StaticBody" parent="Environment/Floor"]
@@ -122,6 +129,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3558, -0.827019, -178.075 )
 shape = SubResource( 1 )
 
 [node name="Fences_01" type="Spatial" parent="Environment"]
+editor/display_folded = true
 transform = Transform( 1, 0, 1.74846e-007, 0, 1, 0, -1.74846e-007, 0, 1, -10.0606, 0, 68.8845 )
 
 [node name="Scene Root6" parent="Environment/Fences_01" instance=ExtResource( 10 )]
@@ -629,5 +637,150 @@ shadow_enabled = true
 environment = SubResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 30 )]
-transform = Transform( 1, 0, 1.74846e-007, 0, 1, 0, -1.74846e-007, 0, 1, 5.83087, 0, 146.853 )
+transform = Transform( 1, 0, 1.74846e-007, 0, 1, 0, -1.74846e-007, 0, 1, 0.0964336, 1.90735e-006, 146.116 )
+
+[node name="Enemies" type="Spatial" parent="."]
+editor/display_folded = true
+
+[node name="Enemy" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3451, 1.04827, -15.9338 )
+
+[node name="Enemy13" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 34.8512, 1.04827, -105.378 )
+
+[node name="Enemy34" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 44.4929, 1.04826, -160.685 )
+
+[node name="Enemy7" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45566, 1.04827, 34.4237 )
+
+[node name="Enemy19" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 20.0619, 1.04827, -67.3443 )
+
+[node name="Enemy35" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 11.3673, 1.04827, -154.525 )
+
+[node name="Enemy46" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, -1.86547, 1.04827, 98.241 )
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5944, 1.04827, -1.08153 )
+
+[node name="Enemy22" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 11.5068, 1.04827, -86.3298 )
+
+[node name="Enemy26" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 39.1663, 1.04827, -161.782 )
+
+[node name="Enemy45" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 0.90294, 1.04827, 92.0317 )
+
+[node name="Enemy10" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46221, 1.04827, 65.7747 )
+
+[node name="Enemy20" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 18.4193, 1.04827, -36.6602 )
+
+[node name="Enemy28" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 11.5099, 1.04827, -127.684 )
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3041, 1.04827, -16.4766 )
+
+[node name="Enemy21" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 35.6359, 1.04827, -93.4027 )
+
+[node name="Enemy31" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 22.0056, 1.04827, -163.634 )
+
+[node name="Enemy9" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9337, 1.04827, 42.3755 )
+
+[node name="Enemy18" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 20.4389, 1.04827, -51.0712 )
+
+[node name="Enemy30" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 35.9376, 1.04827, -137.242 )
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48867, 1.04827, 4.44567 )
+
+[node name="Enemy14" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 11.7113, 1.04827, -100.653 )
+
+[node name="Enemy36" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 13.3043, 1.04827, -167.228 )
+
+[node name="Enemy48" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 15.1091, 1.04827, 71.4119 )
+
+[node name="Enemy8" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00543, 1.04827, 42.2764 )
+
+[node name="Enemy16" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 9.50854, 1.04827, -58.9899 )
+
+[node name="Enemy32" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 14.9616, 1.01616, -159.427 )
+
+[node name="Enemy42" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 7.05893, 1.04827, 117.291 )
+
+[node name="Enemy5" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6058, 1.04827, 10.1564 )
+
+[node name="Enemy24" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 34.3407, 1.04827, -79.4983 )
+
+[node name="Enemy25" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 27.9436, 1.04827, -161.32 )
+
+[node name="Enemy12" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76493, 1.04827, 49.7878 )
+
+[node name="Enemy17" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 10.5318, 1.04827, -28.1769 )
+
+[node name="Enemy27" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 34.8222, 1.04827, -121.058 )
+
+[node name="Enemy6" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.558359, 1.04827, 26.6717 )
+
+[node name="Enemy23" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 33.7626, 1.04827, -63.543 )
+
+[node name="Enemy29" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 33.3057, 1.04827, -163.157 )
+
+[node name="Enemy15" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 32.4106, 1.04827, -41.7095 )
+
+[node name="Enemy33" parent="Enemies" instance=ExtResource( 31 )]
+transform = Transform( 0.981296, 0, 0.192507, 0, 1, 0, -0.192507, 0, 0.981296, 11.9725, 1.04827, -114.241 )
+
+[node name="HUD" parent="." instance=ExtResource( 32 )]
+
+[node name="GameOverUI" parent="." instance=ExtResource( 33 )]
+
+[node name="PauseUI" parent="." instance=ExtResource( 34 )]
+
+[node name="VictoryUI" parent="." instance=ExtResource( 35 )]
+
+[node name="Walls" type="Spatial" parent="."]
+
+[node name="InvisibleWall" parent="Walls" instance=ExtResource( 36 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.72299, 0.495432, 158.965 )
+
+[node name="InvisibleWall2" parent="Walls" instance=ExtResource( 36 )]
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 21.7541, 0.495432, 124.184 )
+
+[node name="InvisibleWall4" parent="Walls" instance=ExtResource( 36 )]
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 41.9542, 0.495432, -72.0082 )
+
+[node name="InvisibleWall5" parent="Walls" instance=ExtResource( 36 )]
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 42.2217, 0.495432, -154.42 )
+
+[node name="InvisibleWall3" parent="Walls" instance=ExtResource( 36 )]
+transform = Transform( -0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 40.8042, 0.495432, -9.51504 )
 

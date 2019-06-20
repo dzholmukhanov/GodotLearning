@@ -7,7 +7,8 @@ const WON = 3
 const LOST = 4
 
 var state
-var enemies_cnt
+var enemies_cnt = 0
+var bullets_cnt = 0
 
 signal paused
 signal resumed
@@ -25,6 +26,7 @@ func restart():
 	state = PLAYING
 	var enemies = get_tree().get_nodes_in_group("Enemies")
 	enemies_cnt = enemies.size()
+	bullets_cnt = 100
 	
 func is_paused():
 	return state == PAUSED
@@ -55,3 +57,9 @@ func enemy_died():
 	enemies_cnt -= 1
 	if enemies_cnt == 0:
 		won()
+		
+func shoot():
+	if bullets_cnt > 0:
+		bullets_cnt = bullets_cnt - 1
+		return true
+	return false

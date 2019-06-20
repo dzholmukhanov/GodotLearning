@@ -5,17 +5,10 @@ extends CanvasLayer
 # var b = "text"
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	$AnimationPlayer.play("FadeIn")
+func _process(delta):
+	$BulletsImg/BulletsLbl.text = String(Game.bullets_cnt)
+	$EnemiesImg/EnemiesLbl.text = String(Game.enemies_cnt)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-
-func _on_NewGameBtn_pressed():
-	get_tree().change_scene("LevelLayout.tscn")
-
-
-func _on_QuitBtn_pressed():
-	get_tree().quit()
