@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Gunfire.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CylinderMesh" id=1]
 
@@ -17,6 +18,7 @@ albedo_color = Color( 0.164706, 0.776471, 0.376471, 1 )
 ]]
 script = ExtResource( 1 )
 Bullet = ExtResource( 2 )
+Gunfire = ExtResource( 3 )
 
 [node name="Mesh" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
@@ -28,6 +30,9 @@ transform = Transform( 0.187304, 0, 0, 0, 0.187823, 0, 0, 0, 0.667232, 0.747954,
 mesh = SubResource( 3 )
 material/0 = null
 
+[node name="EmitterSpawn" type="Spatial" parent="Mesh/PistolMesh"]
+transform = Transform( 1, 0, 0, 0, 1, 2.71051e-020, 0, 0, 1, 0, 0, -1.4105 )
+
 [node name="BulletSpawn" type="Spatial" parent="Mesh"]
 transform = Transform( 0.187304, 0, 0, 0, 0.187823, 5.09096e-021, 0, 0, 0.667232, 0, -0.074, -2.32581 )
 
@@ -36,5 +41,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 shape = SubResource( 4 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( -4.37114e-008, 0.258819, -0.965926, 0, 0.965926, 0.258819, 1, 1.13133e-008, -4.2222e-008, -16, 12, 0 )
+transform = Transform( -4.37114e-008, -0.258819, 0.965926, 0, 0.965926, 0.258819, -1, 1.13133e-008, -4.2222e-008, 13, 6, 0 )
+fov = 50.0
 

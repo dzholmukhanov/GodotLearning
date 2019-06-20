@@ -1,6 +1,7 @@
 extends KinematicBody
 
 export (PackedScene) var Bullet
+export (PackedScene) var Gunfire
 
 var gravity = -9.8
 var velocity = Vector3()
@@ -38,6 +39,12 @@ func shoot():
 	bullet.set_scale(Vector3(1, 1, 1))
 	bullet.is_player_bullet = false
 	get_parent().add_child(bullet)
+	
+	var fire = Gunfire.instance()
+	fire.transform = $Mesh/PistolMesh/EmitterSpawn.get_global_transform()
+	fire.set_scale(Vector3(1, 1, 1))
+	get_parent().add_child(fire)
+	fire.emit()
 	
 func _on_VisibilityNotifier_screen_entered():
 	on_screen = true

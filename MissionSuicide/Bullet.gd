@@ -25,5 +25,6 @@ func _on_Bullet_body_entered(body):
 		if ((is_player_bullet and not body.is_in_group("Player")) 
 		or (not is_player_bullet and not body.is_in_group("Enemies"))):
 			if body.is_in_group("Player") or body.is_in_group("Enemies"):
-				body.receive_damage()
+#				body.receive_damage()
+				pass
 			queue_free()
