@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.80.74 commit date:2019-06-16, commit time:23:08, hash:12da679fa094</authoring_tool>
+    </contributor>
+    <created>2019-06-21T14:39:08</created>
+    <modified>2019-06-21T14:39:08</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects/>
+  <library_images/>
+  <library_geometries>
+    <geometry id="Gun-mesh" name="Gun">
+      <mesh>
+        <source id="Gun-mesh-positions">
+          <float_array id="Gun-mesh-positions-array" count="48">0.01999998 -0.1358079 0.07488697 0.01999998 0.128522 0.07488697 0.01999926 0.128522 -0.05262476 0.01999992 -0.1358079 0.02226215 0.01999974 0.128522 0.02226221 0.01999998 0.07566082 0.07488697 0.01999998 0.075661 -0.05262476 0.01999992 0.075661 0.02226215 -0.01999998 -0.1358079 0.07488697 -0.01999998 0.128522 0.07488697 -0.0199995 0.128522 -0.05262476 -0.01999998 -0.1358079 0.02226215 -0.02000015 0.128522 0.02226221 -0.01999998 0.07566082 0.07488697 -0.01999998 0.075661 -0.05262476 -0.01999998 0.075661 0.02226215</float_array>
+          <technique_common>
+            <accessor source="#Gun-mesh-positions-array" count="16" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Gun-mesh-normals">
+          <float_array id="Gun-mesh-normals-array" count="39">1 8.55777e-6 -3.19615e-6 1 1.6321e-6 -2.15908e-6 1 0 -4.60133e-7 -1 2.9067e-6 -4.93724e-6 -1 -1.71078e-6 2.15908e-6 -1 0 4.60133e-7 0 0 1 0 -4.22839e-7 -1 0 1 0 0 -1 0 0 1 0 0 0 -1 0 -1 0</float_array>
+          <technique_common>
+            <accessor source="#Gun-mesh-normals-array" count="13" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Gun-mesh-map-0">
+          <float_array id="Gun-mesh-map-0-array" count="112">0.5 0.7785583 1 0.7785583 1 1 0.5 1 0 0.7785583 0.5 0.7785583 0.5 1 0 1 0 0 0.5 0 0.5 0.7785583 0 0.7785583 0.5 0.7785583 0.5 1 1 1 1 0.7785583 0 0.7785583 0 1 0.5 1 0.5 0.7785583 0 0 0 0.7785583 0.5 0.7785583 0.5 0 0 0 0 0.7785583 0 0.7785583 0 0 1 1 1 0.7785583 1 0.7785583 1 1 0 1 0.5 1 0.5 1 0 1 0.5 0 0 0 0 0 0.5 0 0.5 1 1 1 1 1 0.5 1 0 0.7785583 0 1 0 1 0 0.7785583 0.5 0.7785583 0.5 0 0.5 0 0.5 0.7785583 1 0.7785583 0.5 0.7785583 0.5 0.7785583 1 0.7785583</float_array>
+          <technique_common>
+            <accessor source="#Gun-mesh-map-0-array" count="56" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Gun-mesh-vertices">
+          <input semantic="POSITION" source="#Gun-mesh-positions"/>
+        </vertices>
+        <polylist count="14">
+          <input semantic="VERTEX" source="#Gun-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Gun-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Gun-mesh-map-0" offset="2" set="0"/>
+          <vcount>4 4 4 4 4 4 4 4 4 4 4 4 4 4 </vcount>
+          <p>7 0 0 6 0 1 2 0 2 4 0 3 5 1 4 7 1 5 4 1 6 1 1 7 0 2 8 3 2 9 7 2 10 5 2 11 15 3 12 12 3 13 10 3 14 14 3 15 13 4 16 9 4 17 12 4 18 15 4 19 8 5 20 13 5 21 15 5 22 11 5 23 0 6 24 5 6 25 13 6 26 8 6 27 2 7 28 6 7 29 14 7 30 10 7 31 1 8 32 4 8 33 12 8 34 9 8 35 3 9 36 0 9 37 8 9 38 11 9 39 4 10 40 2 10 41 10 10 42 12 10 43 5 6 44 1 6 45 9 6 46 13 6 47 7 11 48 3 11 49 11 11 50 15 11 51 6 12 52 7 12 53 15 12 54 14 12 55</p>
+        </polylist>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Gun" name="Gun" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 0 1 0 0 -1 0 0 0 0 0 1</matrix>
+        <instance_geometry url="#Gun-mesh" name="Gun"/>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>
