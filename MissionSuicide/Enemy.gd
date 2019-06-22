@@ -18,17 +18,17 @@ func _ready():
 
 func _process(delta):
 	if Game.is_playing() and on_screen:
-		var meshTrans = $Mesh.global_transform
-		var scale = $Mesh.scale
+		var meshTrans = $Villain.global_transform
+		var scale = $Villain.scale
 		var plrPos = player.transform.origin
 		plrPos.y = meshTrans.origin.y
 		var rotTrans = meshTrans.looking_at(plrPos, Vector3.UP)
 		var meshQuat = Quat(meshTrans.basis.orthonormalized())
 		var slerpQuat = meshQuat.slerp(rotTrans.basis, delta * ROTATION_SPEED)
-		$Mesh.global_transform = Transform(
+		$Villain.global_transform = Transform(
 			slerpQuat, 
 			meshTrans.origin)
-		$Mesh.scale = scale
+		$Villain.scale = scale
 
 func _on_ProcessTimer_timeout():
 	if Game.is_playing() and on_screen:
@@ -40,14 +40,15 @@ func _physics_process(delta):
 
 func shoot():
 	var bullet = Bullet.instance()
-	bullet.transform = $Mesh/BulletSpawn.get_global_transform()
+	bullet.transform = $Villain/BulletSpawn.get_global_transform()
 	bullet.set_scale(Vector3(1, 1, 1))
 	bullet.is_player_bullet = false
 	get_parent().add_child(bullet)
 	
 	var fire = Gunfire.instance()
-	fire.transform = $Mesh/PistolMesh/EmitterSpawn.get_global_transform()
+	fire.transform = $Villain/Armature/Gun_Attachment/EmitterSpawn.get_global_transform()
 	fire.set_scale(Vector3(1, 1, 1))
+	fire.rotate(Vector3.UP, PI)
 	get_parent().add_child(fire)
 	fire.emit()
 	

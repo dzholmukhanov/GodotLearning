@@ -526,7 +526,7 @@ bones/10/name = "mixamorig_LeftHand"
 bones/10/parent = 9
 bones/10/rest = Transform( 1, 1.62322e-007, 0, -1.62322e-007, 1, 0, 0, 1.77636e-015, 1, -2.16398, 1.20503, 22.7012 )
 bones/10/enabled = true
-bones/10/bound_children = [ NodePath("Gun_Attachment") ]
+bones/10/bound_children = [  ]
 bones/11/name = "mixamorig_RightShoulder"
 bones/11/parent = 3
 bones/11/rest = Transform( -0.0838446, -8.88178e-016, -0.996479, 0, 1, 8.88178e-016, 0.996479, 0, -0.0838446, -7.08807, 15.5837, 1.41625 )
@@ -624,3 +624,4 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/OneShot/active = false
 parameters/Shooting_Pose/blend_amount = 1.0
+
