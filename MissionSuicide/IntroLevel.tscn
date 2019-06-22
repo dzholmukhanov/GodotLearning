@@ -1,18 +1,19 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://IntroLevel.gd" type="Script" id=1]
-[ext_resource path="res://fonts/noir/Noir/NoirStd-SemiBoldItalic.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://fonts/noir/NoirStd-Regular.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://images/wallpaper_sm.png" type="Texture" id=4]
+[ext_resource path="res://fonts/noir/Noir/NoirPro-Medium.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://images/wallpaper_sm.png" type="Texture" id=3]
 
-[sub_resource type="DynamicFont" id=1]
-size = 48
+[sub_resource type="DynamicFont" id=4]
+size = 64
+outline_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 3 )
+[sub_resource type="DynamicFont" id=5]
+size = 32
+font_data = ExtResource( 2 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=6]
 length = 10.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("BdRect2:color")
@@ -70,7 +71,7 @@ script = ExtResource( 1 )
 anchor_right = 1.0
 margin_top = 73.0
 margin_bottom = 152.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 4 )
 text = "MISSION SUICIDE"
 align = 1
 valign = 1
@@ -87,15 +88,15 @@ margin_bottom = 27.0
 
 [node name="NewGameBtn" type="Button" parent="VBoxContainer"]
 margin_right = 299.0
-margin_bottom = 23.0
-custom_fonts/font = SubResource( 2 )
+margin_bottom = 39.0
+custom_fonts/font = SubResource( 5 )
 text = "NEW GAME"
 
 [node name="QuitBtn" type="Button" parent="VBoxContainer"]
-margin_top = 27.0
+margin_top = 43.0
 margin_right = 299.0
-margin_bottom = 50.0
-custom_fonts/font = SubResource( 2 )
+margin_bottom = 82.0
+custom_fonts/font = SubResource( 5 )
 text = "QUIT"
 
 [node name="BgRect" type="ColorRect" parent="."]
@@ -115,7 +116,7 @@ margin_left = -384.0
 margin_top = -216.0
 margin_right = 384.0
 margin_bottom = 216.0
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 
 [node name="BdRect2" type="ColorRect" parent="."]
 visible = false
@@ -124,7 +125,7 @@ anchor_bottom = 1.0
 color = Color( 0.0509804, 0.117647, 0.160784, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/FadeIn = SubResource( 3 )
+anims/FadeIn = SubResource( 6 )
 
 [connection signal="pressed" from="VBoxContainer/NewGameBtn" to="." method="_on_NewGameBtn_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitBtn" to="." method="_on_QuitBtn_pressed"]

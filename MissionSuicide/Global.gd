@@ -60,6 +60,7 @@ func enemy_died():
 		
 func shoot():
 	if bullets_cnt > 0:
-		bullets_cnt = bullets_cnt - 1
+		if is_playing():
+			bullets_cnt = bullets_cnt - 1
 		return true
 	return false

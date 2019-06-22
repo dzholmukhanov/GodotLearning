@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Spatial
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -6,16 +6,8 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$AnimationPlayer.play("FadeIn")
+	Game.restart()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-
-func _on_NewGameBtn_pressed():
-	get_tree().change_scene("UrbanLevel.tscn")
-
-
-func _on_QuitBtn_pressed():
-	get_tree().quit()
