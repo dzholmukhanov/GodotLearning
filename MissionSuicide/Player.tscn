@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://assets/materials/M_C_Brown_Pants.tres" type="Material" id=7]
 [ext_resource path="res://assets/materials/M_C_Brown_Shoes.tres" type="Material" id=8]
 [ext_resource path="res://assets/materials/M_Paint_Black.tres" type="Material" id=9]
+[ext_resource path="res://assets/character/hero/Dance.anim" type="Animation" id=10]
+[ext_resource path="res://assets/character/hero/Death.anim" type="Animation" id=11]
+[ext_resource path="res://assets/character/hero/Sitting_Idle.anim" type="Animation" id=12]
 
 [sub_resource type="CylinderShape" id=1]
 
@@ -604,35 +607,62 @@ tracks/19/imported = false
 tracks/19/enabled = true
 tracks/19/keys = PoolRealArray( 0, 1, -0.105506, -11.9311, 7.14201, -0.106048, -0.239762, 0.00433491, 0.965013, 1, 1, 1 )
 
+[sub_resource type="AnimationNodeBlend2" id=16]
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "Dance"
+
+[sub_resource type="AnimationNodeBlend2" id=17]
+
 [sub_resource type="AnimationNodeAnimation" id=7]
-animation = "Idle"
+animation = "Death"
 
 [sub_resource type="AnimationNodeAnimation" id=8]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "Running"
 
-[sub_resource type="AnimationNodeBlend2" id=13]
+[sub_resource type="AnimationNodeBlend2" id=10]
 filter_enabled = true
 filters = [ "Armature:mixamorig_Head", "Armature:mixamorig_LeftArm", "Armature:mixamorig_LeftForeArm", "Armature:mixamorig_LeftShoulder", "Armature:mixamorig_Neck", "Armature:mixamorig_RightArm", "Armature:mixamorig_RightForeArm", "Armature:mixamorig_RightShoulder", "Armature:mixamorig_Spine", "Armature:mixamorig_Spine1", "Armature:mixamorig_Spine2" ]
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Shooting_Pose"
 
-[sub_resource type="AnimationNodeBlend2" id=11]
+[sub_resource type="AnimationNodeBlend2" id=18]
 
-[sub_resource type="AnimationNodeBlendTree" id=12]
-graph_offset = Vector2( -669.925, -125 )
-nodes/Idle_Anim/node = SubResource( 7 )
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "Sitting_Idle"
+
+[sub_resource type="AnimationNodeBlend2" id=13]
+
+[sub_resource type="AnimationNodeBlendTree" id=14]
+graph_offset = Vector2( -81, -38.5 )
+nodes/Dance/node = SubResource( 16 )
+nodes/Dance/position = Vector2( 800, -20 )
+nodes/Dance_Anim/node = SubResource( 15 )
+nodes/Dance_Anim/position = Vector2( 580, 180 )
+nodes/Death/node = SubResource( 17 )
+nodes/Death/position = Vector2( 360, -20 )
+nodes/Death_Anim/node = SubResource( 7 )
+nodes/Death_Anim/position = Vector2( 160, 180 )
+nodes/Idle_Anim/node = SubResource( 8 )
 nodes/Idle_Anim/position = Vector2( -540, 0 )
-nodes/Running_Anim/node = SubResource( 8 )
+nodes/Running_Anim/node = SubResource( 9 )
 nodes/Running_Anim/position = Vector2( -540, 120 )
-nodes/Shoot/node = SubResource( 13 )
+nodes/Shoot/node = SubResource( 10 )
 nodes/Shoot/position = Vector2( 0, 0 )
-nodes/Shoot_Anim/node = SubResource( 10 )
+nodes/Shoot_Anim/node = SubResource( 11 )
 nodes/Shoot_Anim/position = Vector2( -280, 200 )
-nodes/Velocity/node = SubResource( 11 )
+nodes/Sitting/node = SubResource( 18 )
+nodes/Sitting/position = Vector2( 580, -20 )
+nodes/Sitting_Anim/node = SubResource( 12 )
+nodes/Sitting_Anim/position = Vector2( 360, 180 )
+nodes/Velocity/node = SubResource( 13 )
 nodes/Velocity/position = Vector2( -260, 0 )
-nodes/output/position = Vector2( 240, 0 )
-node_connections = [ "output", 0, "Shoot", "Shoot", 0, "Velocity", "Shoot", 1, "Shoot_Anim", "Velocity", 0, "Idle_Anim", "Velocity", 1, "Running_Anim" ]
+nodes/output/position = Vector2( 1020, -20 )
+node_connections = [ "output", 0, "Dance", "Velocity", 0, "Idle_Anim", "Velocity", 1, "Running_Anim", "Shoot", 0, "Velocity", "Shoot", 1, "Shoot_Anim", "Sitting", 0, "Death", "Sitting", 1, "Sitting_Anim", "Death", 0, "Shoot", "Death", 1, "Death_Anim", "Dance", 0, "Sitting", "Dance", 1, "Dance_Anim" ]
 
 [node name="Player" type="KinematicBody" groups=[
 "Player",
@@ -708,7 +738,7 @@ bones/10/name = "mixamorig_LeftHand"
 bones/10/parent = 9
 bones/10/rest = Transform( 1, 0, 7.45058e-009, -1.35525e-020, 1, -1.69407e-021, -7.45058e-009, 0, 1, 1.71915, 1.06546, 21.2863 )
 bones/10/enabled = true
-bones/10/bound_children = [  ]
+bones/10/bound_children = [ NodePath("Gun_Attachment") ]
 bones/11/name = "mixamorig_RightShoulder"
 bones/11/parent = 3
 bones/11/rest = Transform( 0.0843989, -1.69407e-021, -0.996432, 1.25005e-007, 1, 1.05881e-008, 0.996432, -1.25453e-007, 0.0843989, -7.34519, 12.4975, -1.16634 )
@@ -788,7 +818,7 @@ material/2 = ExtResource( 7 )
 material/3 = ExtResource( 8 )
 
 [node name="Gun_Attachment" type="BoneAttachment" parent="Hero/Armature"]
-transform = Transform( 0.55504, 0.827631, -0.0834121, -0.591729, 0.322368, -0.738874, -0.584625, 0.459462, 0.668662, 30.6674, 100.409, 19.8258 )
+transform = Transform( 0.562824, 0.823336, -0.0731061, -0.590082, 0.338283, -0.733054, -0.578819, 0.455718, 0.67623, 31.4652, 100.971, 20.012 )
 bone_name = "mixamorig_LeftHand"
 
 [node name="GunMesh" type="MeshInstance" parent="Hero/Armature/Gun_Attachment"]
@@ -803,19 +833,24 @@ transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -5.35043, -2.56851, 47.9006
 transform = Transform( -50, 0, -4.37114e-006, 0, 50, 0, 4.37114e-006, 0, -50, 0, 121.431, 110.398 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hero"]
+anims/Dance = ExtResource( 10 )
+anims/Death = ExtResource( 11 )
 anims/Idle = SubResource( 3 )
 anims/Running = SubResource( 4 )
 anims/Shoot = SubResource( 5 )
 anims/Shooting_Pose = SubResource( 6 )
+anims/Sitting_Idle = ExtResource( 12 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Hero"]
-tree_root = SubResource( 12 )
+tree_root = SubResource( 14 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
+parameters/Dance/blend_amount = 0.0
+parameters/Death/blend_amount = 0.0
 parameters/Shoot/blend_amount = 0.0
+parameters/Sitting/blend_amount = 0.0
 parameters/Velocity/blend_amount = 0.0
 
 [node name="ShootAnimTimer" type="Timer" parent="."]
 one_shot = true
-
 [connection signal="timeout" from="ShootAnimTimer" to="." method="_on_ShootAnimTimer_timeout"]

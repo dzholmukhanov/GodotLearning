@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/character/hero/Hero.mesh" type="ArrayMesh" id=1]
 [ext_resource path="res://assets/materials/M_C_Skin.tres" type="Material" id=2]
@@ -6,8 +6,9 @@
 [ext_resource path="res://assets/materials/M_C_Brown_Pants.tres" type="Material" id=4]
 [ext_resource path="res://assets/materials/M_C_Brown_Shoes.tres" type="Material" id=5]
 [ext_resource path="res://assets/prefabs/P_Gun.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/character/hero/Sitting_Idle.anim" type="Animation" id=7]
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=1]
 resource_name = "Idle"
 length = 1.76667
 loop = true
@@ -152,7 +153,7 @@ tracks/19/imported = false
 tracks/19/enabled = true
 tracks/19/keys = PoolRealArray( 0, 1, -0.0717545, -7.56843, 6.69936, -0.0358278, -0.368285, -0.0149717, 0.928902, 1, 1, 1, 0.0666667, 1, -0.0443765, -7.54666, 6.68276, -0.0361088, -0.368604, -0.0151026, 0.928762, 1, 1, 1, 0.133333, 1, -0.0220742, -7.51778, 6.69966, -0.0363878, -0.368417, -0.0153894, 0.928821, 1, 1, 1, 0.266667, 1, -0.0202713, -7.42422, 6.85291, -0.0373832, -0.367236, -0.0159028, 0.92924, 1, 1, 1, 0.333333, 1, -0.00648342, -7.37737, 6.95389, -0.0378004, -0.367126, -0.0160977, 0.929264, 1, 1, 1, 0.4, 1, 0.0181985, -7.33147, 7.07442, -0.0381709, -0.367366, -0.0162514, 0.929151, 1, 1, 1, 0.466667, 1, 0.035438, -7.29483, 7.18156, -0.0388265, -0.366826, -0.0165076, 0.929332, 1, 1, 1, 0.533333, 1, 0.0391321, -7.23816, 7.27798, -0.0393018, -0.366238, -0.016863, 0.929538, 1, 1, 1, 0.6, 1, 0.0442886, -7.16365, 7.35649, -0.0391961, -0.366803, -0.0171984, 0.929314, 0.999999, 1, 1, 0.733333, 1, 0.0371441, -7.08607, 7.54887, -0.039357, -0.366713, -0.0173814, 0.929339, 1, 1, 1, 0.8, 1, 0.0303011, -7.05933, 7.64165, -0.0394583, -0.366516, -0.0174019, 0.929412, 1, 1, 1, 0.866667, 1, 0.0223151, -7.03718, 7.70605, -0.039379, -0.366574, -0.0174111, 0.929392, 1, 1, 1, 0.933333, 1, 0.0118308, -7.02788, 7.72284, -0.0390519, -0.366938, -0.0173794, 0.929263, 1, 1, 1, 1, 1, 0.00269032, -7.04615, 7.68118, -0.0388293, -0.367067, -0.0173156, 0.929222, 1, 1, 1, 1.06667, 1, -0.0060825, -7.07403, 7.61777, -0.038646, -0.367104, -0.0172428, 0.929217, 1, 1, 1, 1.2, 1, -0.0228887, -7.14278, 7.46609, -0.0383083, -0.367111, -0.0170765, 0.929231, 1, 1, 1, 1.26667, 1, -0.0292973, -7.1848, 7.38823, -0.0381473, -0.36716, -0.0169696, 0.92922, 1, 1, 1, 1.33333, 1, -0.0388223, -7.25665, 7.30563, -0.0380952, -0.367027, -0.016774, 0.929279, 1, 1, 1, 1.4, 1, -0.0576016, -7.30725, 7.23476, -0.0379788, -0.366989, -0.0165363, 0.929302, 1, 1, 1, 1.46667, 1, -0.0760031, -7.33463, 7.15029, -0.0376846, -0.36758, -0.0162356, 0.929086, 1, 1, 1, 1.53333, 1, -0.0878998, -7.38377, 7.03462, -0.0374058, -0.367702, -0.0160158, 0.929053, 1, 1, 1, 1.6, 1, -0.096355, -7.43331, 6.92432, -0.0371333, -0.367776, -0.015808, 0.929038, 1, 0.999999, 1, 1.66667, 1, -0.0949783, -7.47378, 6.84793, -0.0368761, -0.367933, -0.0156035, 0.92899, 1, 1, 1, 1.73333, 1, -0.0849903, -7.50729, 6.79945, -0.0366331, -0.368141, -0.0154058, 0.92892, 1, 1, 1, 1.76667, 1, -0.0793338, -7.52352, 6.77733, -0.0365126, -0.368249, -0.0153073, 0.928884, 1, 1, 1 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=2]
 resource_name = "Running"
 length = 0.7
 loop = true
@@ -297,7 +298,7 @@ tracks/19/imported = false
 tracks/19/enabled = true
 tracks/19/keys = PoolRealArray( 0, 1, -0.0403881, -10.6117, 7.8817, 0.0464275, 0.029619, -0.0380805, 0.997756, 1, 1, 0.999999, 0.0666667, 1, 0.920455, -4.09825, 11.8011, 0.0444165, 0.0317439, -0.0160216, 0.99838, 1, 1, 1, 0.133333, 1, 1.32346, -0.101227, 14.9165, 0.0453297, 0.0530962, 0.00301533, 0.997555, 1, 1, 1, 0.2, 1, 1.65115, -1.84403, 15.443, 0.0290058, 0.0451526, 0.0011409, 0.998558, 1, 1, 1, 0.266667, 1, 1.38625, -6.68756, 13.1655, 0.0208639, 0.0547036, 0.00745798, 0.998257, 1, 1, 1, 0.333333, 1, 0.44476, -12.0087, 8.64789, 0.0315371, 0.0441797, 0.0139548, 0.998428, 1, 1, 1, 0.4, 1, 0.306541, -7.03939, 9.88003, 0.0435899, 0.0307412, -0.0164316, 0.998441, 1, 1, 1, 0.466667, 1, 0.331187, -1.83131, 10.7919, 0.0734211, -0.00306985, -0.0397808, 0.996503, 1, 1, 1, 0.533333, 1, 0.456532, -2.88025, 11.728, 0.058258, -0.00520436, -0.029466, 0.997853, 1, 1, 1, 0.6, 1, 0.0396538, -7.29885, 9.93071, 0.0543258, 0.0148308, -0.027841, 0.998025, 1, 1, 0.999999, 0.666667, 1, -0.503889, -12.1629, 7.05167, 0.0490801, 0.0396043, -0.0524141, 0.996632, 1, 1, 1, 0.7, 1, -0.144789, -10.9875, 7.67676, 0.0468916, 0.0319676, -0.0415223, 0.997525, 1, 1, 1 )
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=3]
 resource_name = "Shoot"
 length = 0.6
 tracks/0/type = "transform"
@@ -441,7 +442,7 @@ tracks/19/imported = false
 tracks/19/enabled = true
 tracks/19/keys = PoolRealArray( 0, 1, -0.105506, -11.9311, 7.14201, -0.106048, -0.239762, 0.00433491, 0.965013, 1, 1, 1, 0.0666667, 1, -0.114199, -11.9289, 7.1396, -0.105986, -0.239367, 0.00422798, 0.965118, 1, 1, 1, 0.133333, 1, -0.120625, -11.9222, 7.1294, -0.105799, -0.239049, 0.00420113, 0.965217, 1, 1, 1, 0.2, 1, -0.117816, -11.8721, 7.11361, -0.106277, -0.239584, 0.00569622, 0.965024, 1, 1, 1, 0.266667, 1, -0.124999, -11.8582, 7.31165, -0.11002, -0.242625, 0.00805019, 0.963828, 1, 1, 1, 0.333333, 1, -0.155281, -12.0035, 7.90339, -0.117815, -0.249668, 0.00939428, 0.961092, 1, 1, 1, 0.4, 1, -0.266087, -12.34, 8.38539, -0.126202, -0.249837, 0.0123647, 0.959949, 1, 1, 1, 0.466667, 1, -0.284304, -12.8175, 8.08988, -0.134729, -0.246507, 0.014951, 0.959614, 1, 1, 1, 0.533333, 1, -0.214551, -13.0896, 7.48089, -0.1376, -0.244079, 0.0153938, 0.95982, 1, 0.999999, 1, 0.6, 1, -0.0733399, -13.0464, 6.93457, -0.13442, -0.243962, 0.0133652, 0.960331, 1, 1, 1 )
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=4]
 resource_name = "Shooting_Pose"
 length = 0.001
 tracks/0/type = "transform"
@@ -585,33 +586,33 @@ tracks/19/imported = false
 tracks/19/enabled = true
 tracks/19/keys = PoolRealArray( 0, 1, -0.105506, -11.9311, 7.14201, -0.106048, -0.239762, 0.00433491, 0.965013, 1, 1, 1 )
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=5]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=6]
 animation = "Running"
 
-[sub_resource type="AnimationNodeOneShot" id=12]
+[sub_resource type="AnimationNodeOneShot" id=7]
 filter_enabled = true
 filters = [ "Armature:mixamorig_Head", "Armature:mixamorig_LeftArm", "Armature:mixamorig_LeftForeArm", "Armature:mixamorig_LeftShoulder", "Armature:mixamorig_Neck", "Armature:mixamorig_RightArm", "Armature:mixamorig_RightForeArm", "Armature:mixamorig_RightShoulder", "Armature:mixamorig_Spine", "Armature:mixamorig_Spine1", "Armature:mixamorig_Spine2" ]
 autorestart_random_delay = 6.53813e-037
 
-[sub_resource type="AnimationNodeAnimation" id=13]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "Shoot"
 
-[sub_resource type="AnimationNodeBlend2" id=14]
+[sub_resource type="AnimationNodeBlend2" id=9]
 
-[sub_resource type="AnimationNodeBlendTree" id=15]
+[sub_resource type="AnimationNodeBlendTree" id=10]
 graph_offset = Vector2( -802, 24.75 )
-nodes/Idle_Anim/node = SubResource( 10 )
+nodes/Idle_Anim/node = SubResource( 5 )
 nodes/Idle_Anim/position = Vector2( -540, 0 )
-nodes/Running_Anim/node = SubResource( 11 )
+nodes/Running_Anim/node = SubResource( 6 )
 nodes/Running_Anim/position = Vector2( -540, 120 )
-nodes/Shoot/node = SubResource( 12 )
+nodes/Shoot/node = SubResource( 7 )
 nodes/Shoot/position = Vector2( 0, 0 )
-nodes/Shoot_Anim/node = SubResource( 13 )
+nodes/Shoot_Anim/node = SubResource( 8 )
 nodes/Shoot_Anim/position = Vector2( -260, 220 )
-nodes/Velocity/node = SubResource( 14 )
+nodes/Velocity/node = SubResource( 9 )
 nodes/Velocity/position = Vector2( -260, 0 )
 nodes/output/position = Vector2( 240, 0 )
 node_connections = [ "output", 0, "Shoot", "Velocity", 0, "Idle_Anim", "Velocity", 1, "Running_Anim", "Shoot", 0, "Velocity", "Shoot", 1, "Shoot_Anim" ]
@@ -674,7 +675,7 @@ bones/10/name = "mixamorig_LeftHand"
 bones/10/parent = 9
 bones/10/rest = Transform( 1, 0, 7.45058e-009, -1.35525e-020, 1, -1.69407e-021, -7.45058e-009, 0, 1, 1.71915, 1.06546, 21.2863 )
 bones/10/enabled = true
-bones/10/bound_children = [  ]
+bones/10/bound_children = [ NodePath("Gun_Attachment") ]
 bones/11/name = "mixamorig_RightShoulder"
 bones/11/parent = 3
 bones/11/rest = Transform( 0.0843989, -1.69407e-021, -0.996432, 1.25005e-007, 1, 1.05881e-008, 0.996432, -1.25453e-007, 0.0843989, -7.34519, 12.4975, -1.16634 )
@@ -755,22 +756,21 @@ material/3 = ExtResource( 5 )
 
 [node name="Gun_Attachment" type="BoneAttachment" parent="Armature"]
 editor/display_folded = true
-transform = Transform( 0.563253, 0.822987, -0.0737506, -0.595867, 0.342727, -0.726279, -0.572442, 0.453024, 0.683433, 31.64, 101.405, 20.3712 )
+transform = Transform( 0.111421, -0.238846, -0.964643, -0.26812, 0.927465, -0.260611, 0.95692, 0.287679, 0.0393006, 1.4896, 40.9385, 42.9776 )
 bone_name = "mixamorig_LeftHand"
 
 [node name="Gun" parent="Armature/Gun_Attachment" instance=ExtResource( 6 )]
 transform = Transform( -4.33998e-006, -99.2871, 11.9192, 100, -4.37113e-006, -6.37145e-013, 5.21004e-007, 11.9192, 99.2871, -1.63704, -2.23589, 23.0175 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Idle = SubResource( 6 )
-anims/Running = SubResource( 7 )
-anims/Shoot = SubResource( 8 )
-anims/Shooting_Pose = SubResource( 9 )
+anims/Idle = SubResource( 1 )
+anims/Running = SubResource( 2 )
+anims/Shoot = SubResource( 3 )
+anims/Shooting_Pose = SubResource( 4 )
+anims/Sitting_Idle = ExtResource( 7 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 15 )
+tree_root = SubResource( 10 )
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/Shoot/active = false
 parameters/Velocity/blend_amount = 0.0
-
