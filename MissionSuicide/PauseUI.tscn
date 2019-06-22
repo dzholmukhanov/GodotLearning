@@ -3,7 +3,7 @@
 [ext_resource path="res://PauseUI.gd" type="Script" id=1]
 [ext_resource path="res://fonts/noir/Noir/NoirPro-Medium.ttf" type="DynamicFontData" id=2]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=4]
 size = 32
 font_data = ExtResource( 2 )
 
@@ -33,7 +33,7 @@ anchor_right = 0.5
 margin_left = -125.0
 margin_right = 125.0
 margin_bottom = 80.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.968627, 0.286275, 0.286275, 1 )
 text = "RESUME"

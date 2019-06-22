@@ -20,7 +20,6 @@ func _on_ResumeBtn_pressed():
 	Game.resume()
 
 func _on_NewGameBtn_pressed():
-	Game.restart()
 	get_tree().reload_current_scene()
 
 

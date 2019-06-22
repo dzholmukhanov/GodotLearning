@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://MainMenuLevel.gd" type="Script" id=1]
 [ext_resource path="res://assets/prefabs/P_Fusebox.tscn" type="PackedScene" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://IntroLevel.gd" type="Script" id=28]
 [ext_resource path="res://fonts/noir/Noir/NoirPro-Medium.ttf" type="DynamicFontData" id=29]
 [ext_resource path="res://images/wallpaper_sm.png" type="Texture" id=30]
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=31]
 
 [sub_resource type="Environment" id=1]
 background_mode = 3
@@ -52,19 +53,18 @@ glow_enabled = true
 glow_intensity = 0.1
 glow_bloom = 0.05
 adjustment_enabled = true
-adjustment_brightness = 0.61
-adjustment_saturation = 0.37
+adjustment_saturation = 0.5
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 41.1754, 1, 195.023 )
 
 [sub_resource type="CubeMesh" id=3]
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 32
 font_data = ExtResource( 29 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 64
 outline_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
 font_data = ExtResource( 29 )
@@ -523,7 +523,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -80.0
 margin_right = 250.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.968627, 0.286275, 0.286275, 1 )
 text = "NEW GAME"
@@ -537,7 +537,7 @@ anchor_bottom = 1.0
 margin_left = -199.58
 margin_top = -80.0
 margin_right = 50.4204
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.968627, 0.286275, 0.286275, 1 )
@@ -548,9 +548,9 @@ flat = true
 anchor_right = 1.0
 margin_top = 73.0
 margin_bottom = 152.0
-custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0.858824, 0.0705882, 0.0705882, 1 )
-text = "Glitch Mob"
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.968627, 0.286275, 0.286275, 1 )
+text = "MOB GLITCH"
 align = 1
 valign = 1
 
@@ -581,6 +581,15 @@ color = Color( 0.0509804, 0.117647, 0.160784, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MenuUI"]
 anims/FadeIn = SubResource( 6 )
+
+[node name="Enemy" parent="." instance=ExtResource( 31 )]
+transform = Transform( 0.103532, 0, -0.994626, 0, 1, 0, 0.994626, 0, 0.103532, -2.00732, 0, 96.4729 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 31 )]
+transform = Transform( -0.915272, 0, -0.402837, 0, 1, 0, 0.402837, 0, -0.915272, -4.29791, 0, 106.753 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 31 )]
+transform = Transform( -0.66075, 0, -0.750606, 0, 1, 0, 0.750606, 0, -0.66075, -4.38719, 0, 101.483 )
 
 [connection signal="pressed" from="MenuUI/NewGameBtn" to="MenuUI" method="_on_NewGameBtn_pressed"]
 [connection signal="pressed" from="MenuUI/QuitBtn" to="MenuUI" method="_on_QuitBtn_pressed"]
