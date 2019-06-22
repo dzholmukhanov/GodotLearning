@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://MainMenuLevel.gd" type="Script" id=1]
 [ext_resource path="res://assets/prefabs/P_Fusebox.tscn" type="PackedScene" id=2]
@@ -29,8 +29,10 @@
 [ext_resource path="res://assets/prefabs/P_Building_05.tscn" type="PackedScene" id=27]
 [ext_resource path="res://IntroLevel.gd" type="Script" id=28]
 [ext_resource path="res://fonts/noir/Noir/NoirPro-Medium.ttf" type="DynamicFontData" id=29]
-[ext_resource path="res://images/wallpaper_sm.png" type="Texture" id=30]
-[ext_resource path="res://Enemy.tscn" type="PackedScene" id=31]
+[ext_resource path="res://fonts/speed2.ttf" type="DynamicFontData" id=30]
+[ext_resource path="res://images/logo.png" type="Texture" id=31]
+[ext_resource path="res://images/wallpaper_sm.png" type="Texture" id=32]
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=33]
 
 [sub_resource type="Environment" id=1]
 background_mode = 3
@@ -65,12 +67,12 @@ size = 32
 font_data = ExtResource( 29 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 64
+size = 72
 outline_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
-font_data = ExtResource( 29 )
+font_data = ExtResource( 30 )
 
 [sub_resource type="Animation" id=6]
-length = 10.0
+length = 13.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("BdRect2:color")
 tracks/0/interp = 1
@@ -108,7 +110,7 @@ tracks/2/keys = {
 "values": [ true, true, false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("BgRect:rect_position")
+tracks/3/path = NodePath("DarkRect:rect_position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -118,6 +120,18 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -616 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("WhiteRect:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 6, 9.5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -620 ) ]
 }
 
 [node name="MainMenuLevel" type="Spatial"]
@@ -554,15 +568,27 @@ text = "MOB GLITCH"
 align = 1
 valign = 1
 
-[node name="BgRect" type="ColorRect" parent="MenuUI"]
+[node name="WhiteRect" type="ColorRect" parent="MenuUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -616.0
-margin_bottom = -616.0
+
+[node name="LogoImgRect" type="TextureRect" parent="MenuUI/WhiteRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -256.0
+margin_top = -256.0
+margin_right = 256.0
+margin_bottom = 256.0
+texture = ExtResource( 31 )
+
+[node name="DarkRect" type="ColorRect" parent="MenuUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 color = Color( 0.0509804, 0.117647, 0.160784, 1 )
 
 [node name="GodotImgRect" type="TextureRect" parent="MenuUI"]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -571,24 +597,23 @@ margin_left = -384.0
 margin_top = -216.0
 margin_right = 384.0
 margin_bottom = 216.0
-texture = ExtResource( 30 )
+texture = ExtResource( 32 )
 
 [node name="BdRect2" type="ColorRect" parent="MenuUI"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.0509804, 0.117647, 0.160784, 1 )
+color = Color( 0.0509804, 0.117647, 0.160784, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MenuUI"]
 anims/FadeIn = SubResource( 6 )
 
-[node name="Enemy" parent="." instance=ExtResource( 31 )]
+[node name="Enemy" parent="." instance=ExtResource( 33 )]
 transform = Transform( 0.103532, 0, -0.994626, 0, 1, 0, 0.994626, 0, 0.103532, -2.00732, 0, 96.4729 )
 
-[node name="Enemy2" parent="." instance=ExtResource( 31 )]
+[node name="Enemy2" parent="." instance=ExtResource( 33 )]
 transform = Transform( -0.915272, 0, -0.402837, 0, 1, 0, 0.402837, 0, -0.915272, -4.29791, 0, 106.753 )
 
-[node name="Enemy3" parent="." instance=ExtResource( 31 )]
+[node name="Enemy3" parent="." instance=ExtResource( 33 )]
 transform = Transform( -0.66075, 0, -0.750606, 0, 1, 0, 0.750606, 0, -0.66075, -4.38719, 0, 101.483 )
 
 [connection signal="pressed" from="MenuUI/NewGameBtn" to="MenuUI" method="_on_NewGameBtn_pressed"]
