@@ -2,7 +2,6 @@ extends KinematicBody
 
 export (PackedScene) var Bullet
 export (PackedScene) var Gunfire
-export (float) var WaitBeforeShoot = 1
 
 var gravity = -9.8
 var velocity = Vector3()
@@ -14,7 +13,7 @@ const ROTATION_SPEED = 5
 
 func _ready():
 	player = get_tree().get_root().find_node("Player", true, false)
-	$ProcessTimer.start(WaitBeforeShoot)
+	$ProcessTimer.start(rand_range(0.1, 1))
 	$Villain.rotate(Vector3.UP, rand_range(-PI, PI))
 	
 
@@ -68,6 +67,8 @@ func receive_damage():
 		$Villain/AnimationTree.set("parameters/Death/blend_amount", 1)
 		alive = false
 		$Collision.disabled = true
+		$AudioStreamPlayer.pitch_scale = rand_range(0.75, 1.25)
+		$AudioStreamPlayer.play()
 
 func _on_ReactionTimer_timeout():
 	on_screen = true

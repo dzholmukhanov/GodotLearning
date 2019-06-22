@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/character/hero/Dance.anim" type="Animation" id=10]
 [ext_resource path="res://assets/character/hero/Death.anim" type="Animation" id=11]
 [ext_resource path="res://assets/character/hero/Sitting_Idle.anim" type="Animation" id=12]
+[ext_resource path="res://assets/sounds/death.wav" type="AudioStream" id=13]
 
 [sub_resource type="CylinderShape" id=1]
 
@@ -662,7 +663,23 @@ nodes/Sitting_Anim/position = Vector2( 360, 180 )
 nodes/Velocity/node = SubResource( 17 )
 nodes/Velocity/position = Vector2( -260, 0 )
 nodes/output/position = Vector2( 1020, -20 )
-node_connections = [ "output", 0, "Dance", "Death", 0, "Shoot", "Death", 1, "Death_Anim", "Shoot", 0, "Velocity", "Shoot", 1, "Shoot_Anim", "Dance", 0, "Sitting", "Dance", 1, "Dance_Anim", "Velocity", 0, "Idle_Anim", "Velocity", 1, "Running_Anim", "Sitting", 0, "Death", "Sitting", 1, "Sitting_Anim" ]
+node_connections = [ "output", 0, "Dance", "Shoot", 0, "Velocity", "Shoot", 1, "Shoot_Anim", "Death", 0, "Shoot", "Death", 1, "Death_Anim", "Dance", 0, "Sitting", "Dance", 1, "Dance_Anim", "Velocity", 0, "Idle_Anim", "Velocity", 1, "Running_Anim", "Sitting", 0, "Death", "Sitting", 1, "Sitting_Anim" ]
+
+[sub_resource type="Animation" id=19]
+resource_name = "VictoryZoom"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 70.0, 24.7 ]
+}
 
 [node name="Player" type="KinematicBody" groups=[
 "Player",
@@ -678,6 +695,7 @@ shape = SubResource( 1 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -4.37114e-008, -0.258819, 0.965926, 0, 0.965926, 0.258819, -1, 1.13133e-008, -4.2222e-008, 13, 6, 0 )
+fov = 62.3997
 far = 500.0
 
 [node name="Hero" type="Spatial" parent="."]
@@ -740,7 +758,7 @@ bones/10/name = "mixamorig_LeftHand"
 bones/10/parent = 9
 bones/10/rest = Transform( 1, 0, 7.45058e-009, -1.35525e-020, 1, -1.69407e-021, -7.45058e-009, 0, 1, 1.71915, 1.06546, 21.2863 )
 bones/10/enabled = true
-bones/10/bound_children = [  ]
+bones/10/bound_children = [ NodePath("Gun_Attachment") ]
 bones/11/name = "mixamorig_RightShoulder"
 bones/11/parent = 3
 bones/11/rest = Transform( 0.0843989, -1.69407e-021, -0.996432, 1.25005e-007, 1, 1.05881e-008, 0.996432, -1.25453e-007, 0.0843989, -7.34519, 12.4975, -1.16634 )
@@ -820,7 +838,7 @@ material/2 = ExtResource( 7 )
 material/3 = ExtResource( 8 )
 
 [node name="Gun_Attachment" type="BoneAttachment" parent="Hero/Armature"]
-transform = Transform( 0.556186, 0.82698, -0.0822181, -0.593766, 0.32621, -0.735545, -0.581461, 0.457919, 0.672467, 30.8482, 100.653, 19.9998 )
+transform = Transform( 0.56006, 0.82545, -0.0704567, -0.58473, 0.333617, -0.739453, -0.586875, 0.455337, 0.66951, 31.2836, 100.53, 19.7233 )
 bone_name = "mixamorig_LeftHand"
 
 [node name="GunMesh" type="MeshInstance" parent="Hero/Armature/Gun_Attachment"]
@@ -855,5 +873,12 @@ parameters/Velocity/blend_amount = 0.0
 
 [node name="ShootAnimTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+pitch_scale = 0.75
+
+[node name="CameraAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/VictoryZoom = SubResource( 19 )
 
 [connection signal="timeout" from="ShootAnimTimer" to="." method="_on_ShootAnimTimer_timeout"]

@@ -54,6 +54,7 @@ func won():
 	if state == PLAYING:
 		state = WON
 		emit_signal("won")
+		play_victory_music()
 
 func enemy_died():
 	enemies_cnt -= 1
@@ -66,3 +67,11 @@ func shoot():
 			bullets_cnt = bullets_cnt - 1
 		return true
 	return false
+	
+func play_main_music():
+	$VictoryAudioPlayer.stop()
+	$MainAudioPlayer.play(0)
+
+func play_victory_music():
+	$MainAudioPlayer.stop()
+	$VictoryAudioPlayer.play(0)

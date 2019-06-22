@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/materials/M_C_Skin.tres" type="Material" id=6]
 [ext_resource path="res://assets/materials/M_Paint_Black.tres" type="Material" id=7]
 [ext_resource path="res://assets/character/villain/Death.anim" type="Animation" id=8]
+[ext_resource path="res://assets/sounds/death.wav" type="AudioStream" id=9]
 
 [sub_resource type="CylinderShape" id=1]
 
@@ -495,7 +496,7 @@ nodes/Shooting_Pose/position = Vector2( -20, 160 )
 nodes/Shooting_Pose_Anim/node = SubResource( 12 )
 nodes/Shooting_Pose_Anim/position = Vector2( -360, 280 )
 nodes/output/position = Vector2( 780, 160 )
-node_connections = [ "output", 0, "Death", "Death", 0, "OneShot", "Death", 1, "Death_Anim", "Shooting_Pose", 0, "Idle_Anim", "Shooting_Pose", 1, "Shooting_Pose_Anim", "OneShot", 0, "Shooting_Pose", "OneShot", 1, "Shoot_Anim" ]
+node_connections = [ "output", 0, "Death", "Shooting_Pose", 0, "Idle_Anim", "Shooting_Pose", 1, "Shooting_Pose_Anim", "OneShot", 0, "Shooting_Pose", "OneShot", 1, "Shoot_Anim", "Death", 0, "OneShot", "Death", 1, "Death_Anim" ]
 
 [node name="Enemy" type="KinematicBody" groups=[
 "Enemies",
@@ -577,7 +578,7 @@ bones/10/name = "mixamorig_LeftHand"
 bones/10/parent = 9
 bones/10/rest = Transform( 1, 1.62322e-007, 0, -1.62322e-007, 1, 0, 0, 1.77636e-015, 1, -2.16398, 1.20503, 22.7012 )
 bones/10/enabled = true
-bones/10/bound_children = [ NodePath("Gun_Attachment") ]
+bones/10/bound_children = [  ]
 bones/11/name = "mixamorig_RightShoulder"
 bones/11/parent = 3
 bones/11/rest = Transform( -0.0838446, -8.88178e-016, -0.996479, 0, 1, 8.88178e-016, 0.996479, 0, -0.0838446, -7.08807, 15.5837, 1.41625 )
@@ -684,6 +685,9 @@ parameters/Shooting_Pose/blend_amount = 1.0
 
 [node name="BulletSpawn" type="Spatial" parent="Villain"]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 142.623, -119.272 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
 
 [connection signal="screen_entered" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]

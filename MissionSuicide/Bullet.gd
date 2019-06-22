@@ -12,6 +12,8 @@ func _ready():
 	direction = -transform.basis.z
 	velocity = direction * SPEED
 	lifetime = 0
+	$AudioStreamPlayer.pitch_scale = rand_range(0.75, 1.25)
+	$AudioStreamPlayer.play()
 
 func _process(delta):
 	if Game.is_playing():

@@ -106,6 +106,7 @@ func track_mouse(delta):
 func receive_damage():
 	Game.lost()
 	$Hero/AnimationTree.set("parameters/Death/blend_amount", 1)
+	$AudioStreamPlayer.play()
 	
 
 func _on_ShootAnimTimer_timeout():
@@ -124,3 +125,4 @@ func _on_won():
 		slerpQuat, 
 		meshTrans.origin)
 	$Hero.scale = scale
+	$CameraAnimationPlayer.play("VictoryZoom")

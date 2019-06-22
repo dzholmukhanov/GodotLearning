@@ -1126,7 +1126,6 @@ near = 1.0
 far = 500.0
 
 [node name="MenuUI" type="CanvasLayer" parent="."]
-editor/display_folded = true
 script = ExtResource( 28 )
 
 [node name="NewGameBtn" type="Button" parent="MenuUI"]
@@ -1186,6 +1185,7 @@ anchor_bottom = 1.0
 color = Color( 0.0509804, 0.117647, 0.160784, 1 )
 
 [node name="GodotImgRect" type="TextureRect" parent="MenuUI"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1197,12 +1197,18 @@ margin_bottom = 216.0
 texture = ExtResource( 32 )
 
 [node name="BdRect2" type="ColorRect" parent="MenuUI"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.0509804, 0.117647, 0.160784, 0 )
+color = Color( 0.0509804, 0.117647, 0.160784, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MenuUI"]
 anims/FadeIn = SubResource( 6 )
+
+[node name="MusicTimer" type="Timer" parent="MenuUI"]
+wait_time = 5.0
+one_shot = true
+autostart = true
 
 [node name="Enemy" parent="." instance=ExtResource( 33 )]
 transform = Transform( 0.103532, 0, -0.994626, 0, 1, 0, 0.994626, 0, 0.103532, -2.00732, 0, 96.4729 )
@@ -1216,6 +1222,7 @@ transform = Transform( -0.66075, 0, -0.750606, 0, 1, 0, 0.750606, 0, -0.66075, -
 [node name="Player" type="KinematicBody" parent="." groups=[
 "Player",
 ]]
+editor/display_folded = true
 transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 32.808, 18.298, 127.915 )
 collision_layer = 3
 
@@ -1374,3 +1381,4 @@ active = true
 
 [connection signal="pressed" from="MenuUI/NewGameBtn" to="MenuUI" method="_on_NewGameBtn_pressed"]
 [connection signal="pressed" from="MenuUI/QuitBtn" to="MenuUI" method="_on_QuitBtn_pressed"]
+[connection signal="timeout" from="MenuUI/MusicTimer" to="." method="_on_MusicTimer_timeout"]

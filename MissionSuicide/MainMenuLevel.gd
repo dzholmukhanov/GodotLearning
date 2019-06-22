@@ -15,3 +15,7 @@ func _process(delta):
 	if mouse_pos != null:
 		$Camera.translate_object_local(Vector3(new_mouse_pos.x - mouse_pos.x, mouse_pos.y - new_mouse_pos.y, 0) * 0.0005)
 	mouse_pos = new_mouse_pos
+
+
+func _on_MusicTimer_timeout():
+	Game.play_main_music()
