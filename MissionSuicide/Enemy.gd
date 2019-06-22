@@ -2,22 +2,24 @@ extends KinematicBody
 
 export (PackedScene) var Bullet
 export (PackedScene) var Gunfire
+export (float) var WaitBeforeShoot = 1
 
 var gravity = -9.8
 var velocity = Vector3()
 var on_screen = false
+var alive = true
 var player
 
 const ROTATION_SPEED = 5
 
 func _ready():
-	rand_seed(1)
 	player = get_tree().get_root().find_node("Player", true, false)
-	$ProcessTimer.start(rand_range(0.05, 1))
+	$ProcessTimer.start(WaitBeforeShoot)
+	$Villain.rotate(Vector3.UP, rand_range(-PI, PI))
 	
 
 func _process(delta):
-	if Game.is_playing() and on_screen:
+	if Game.is_playing() and on_screen and alive:
 		var meshTrans = $Villain.global_transform
 		var scale = $Villain.scale
 		var plrPos = player.transform.origin
@@ -31,12 +33,13 @@ func _process(delta):
 		$Villain.scale = scale
 
 func _on_ProcessTimer_timeout():
-	if Game.is_playing() and on_screen:
+	if Game.is_playing() and on_screen and alive:
 		shoot()
 
 func _physics_process(delta):
-	velocity.y += delta * gravity
-	velocity = move_and_slide(velocity, Vector3.UP)
+	if alive:
+		velocity.y += delta * gravity
+		velocity = move_and_slide(velocity, Vector3.UP)
 
 func shoot():
 	var bullet = Bullet.instance()
@@ -60,8 +63,11 @@ func _on_VisibilityNotifier_screen_exited():
 	on_screen = false
 
 func receive_damage():
-	Game.enemy_died()
-	queue_free()
+	if alive:
+		Game.enemy_died()
+		$Villain/AnimationTree.set("parameters/Death/blend_amount", 1)
+		alive = false
+		$Collision.disabled = true
 
 func _on_ReactionTimer_timeout():
 	on_screen = true

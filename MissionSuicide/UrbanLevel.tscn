@@ -743,7 +743,6 @@ environment = SubResource( 5 )
 transform = Transform( 1, 0, 1.74846e-007, 0, 1, 0, -1.74846e-007, 0, 1, 0.0964336, 1.90735e-006, 146.116 )
 
 [node name="Enemies" type="Spatial" parent="."]
-editor/display_folded = true
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 34 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3451, 1.04827, -15.9338 )

@@ -64,7 +64,7 @@ uppercase = true
 anims/FadeIn = SubResource( 2 )
 
 [node name="RestartTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 20.0
 one_shot = true
 
 [connection signal="timeout" from="RestartTimer" to="." method="_on_RestartTimer_timeout"]

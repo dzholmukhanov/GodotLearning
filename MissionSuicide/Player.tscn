@@ -607,62 +607,62 @@ tracks/19/imported = false
 tracks/19/enabled = true
 tracks/19/keys = PoolRealArray( 0, 1, -0.105506, -11.9311, 7.14201, -0.106048, -0.239762, 0.00433491, 0.965013, 1, 1, 1 )
 
-[sub_resource type="AnimationNodeBlend2" id=16]
-
-[sub_resource type="AnimationNodeAnimation" id=15]
-animation = "Dance"
-
-[sub_resource type="AnimationNodeBlend2" id=17]
-
-[sub_resource type="AnimationNodeAnimation" id=7]
-animation = "Death"
+[sub_resource type="AnimationNodeBlend2" id=7]
 
 [sub_resource type="AnimationNodeAnimation" id=8]
+animation = "Dance"
+
+[sub_resource type="AnimationNodeBlend2" id=9]
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "Death"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "Running"
 
-[sub_resource type="AnimationNodeBlend2" id=10]
+[sub_resource type="AnimationNodeBlend2" id=13]
 filter_enabled = true
 filters = [ "Armature:mixamorig_Head", "Armature:mixamorig_LeftArm", "Armature:mixamorig_LeftForeArm", "Armature:mixamorig_LeftShoulder", "Armature:mixamorig_Neck", "Armature:mixamorig_RightArm", "Armature:mixamorig_RightForeArm", "Armature:mixamorig_RightShoulder", "Armature:mixamorig_Spine", "Armature:mixamorig_Spine1", "Armature:mixamorig_Spine2" ]
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "Shooting_Pose"
 
-[sub_resource type="AnimationNodeBlend2" id=18]
+[sub_resource type="AnimationNodeBlend2" id=15]
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "Sitting_Idle"
 
-[sub_resource type="AnimationNodeBlend2" id=13]
+[sub_resource type="AnimationNodeBlend2" id=17]
 
-[sub_resource type="AnimationNodeBlendTree" id=14]
+[sub_resource type="AnimationNodeBlendTree" id=18]
 graph_offset = Vector2( -81, -38.5 )
-nodes/Dance/node = SubResource( 16 )
+nodes/Dance/node = SubResource( 7 )
 nodes/Dance/position = Vector2( 800, -20 )
-nodes/Dance_Anim/node = SubResource( 15 )
+nodes/Dance_Anim/node = SubResource( 8 )
 nodes/Dance_Anim/position = Vector2( 580, 180 )
-nodes/Death/node = SubResource( 17 )
+nodes/Death/node = SubResource( 9 )
 nodes/Death/position = Vector2( 360, -20 )
-nodes/Death_Anim/node = SubResource( 7 )
+nodes/Death_Anim/node = SubResource( 10 )
 nodes/Death_Anim/position = Vector2( 160, 180 )
-nodes/Idle_Anim/node = SubResource( 8 )
+nodes/Idle_Anim/node = SubResource( 11 )
 nodes/Idle_Anim/position = Vector2( -540, 0 )
-nodes/Running_Anim/node = SubResource( 9 )
+nodes/Running_Anim/node = SubResource( 12 )
 nodes/Running_Anim/position = Vector2( -540, 120 )
-nodes/Shoot/node = SubResource( 10 )
+nodes/Shoot/node = SubResource( 13 )
 nodes/Shoot/position = Vector2( 0, 0 )
-nodes/Shoot_Anim/node = SubResource( 11 )
+nodes/Shoot_Anim/node = SubResource( 14 )
 nodes/Shoot_Anim/position = Vector2( -280, 200 )
-nodes/Sitting/node = SubResource( 18 )
+nodes/Sitting/node = SubResource( 15 )
 nodes/Sitting/position = Vector2( 580, -20 )
-nodes/Sitting_Anim/node = SubResource( 12 )
+nodes/Sitting_Anim/node = SubResource( 16 )
 nodes/Sitting_Anim/position = Vector2( 360, 180 )
-nodes/Velocity/node = SubResource( 13 )
+nodes/Velocity/node = SubResource( 17 )
 nodes/Velocity/position = Vector2( -260, 0 )
 nodes/output/position = Vector2( 1020, -20 )
-node_connections = [ "output", 0, "Dance", "Velocity", 0, "Idle_Anim", "Velocity", 1, "Running_Anim", "Shoot", 0, "Velocity", "Shoot", 1, "Shoot_Anim", "Sitting", 0, "Death", "Sitting", 1, "Sitting_Anim", "Death", 0, "Shoot", "Death", 1, "Death_Anim", "Dance", 0, "Sitting", "Dance", 1, "Dance_Anim" ]
+node_connections = [ "output", 0, "Dance", "Death", 0, "Shoot", "Death", 1, "Death_Anim", "Shoot", 0, "Velocity", "Shoot", 1, "Shoot_Anim", "Dance", 0, "Sitting", "Dance", 1, "Dance_Anim", "Velocity", 0, "Idle_Anim", "Velocity", 1, "Running_Anim", "Sitting", 0, "Death", "Sitting", 1, "Sitting_Anim" ]
 
 [node name="Player" type="KinematicBody" groups=[
 "Player",
@@ -678,8 +678,10 @@ shape = SubResource( 1 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -4.37114e-008, -0.258819, 0.965926, 0, 0.965926, 0.258819, -1, 1.13133e-008, -4.2222e-008, 13, 6, 0 )
+far = 500.0
 
 [node name="Hero" type="Spatial" parent="."]
+editor/display_folded = true
 transform = Transform( 0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, 0, 0, 0 )
 
 [node name="Armature" type="Skeleton" parent="Hero"]
@@ -738,7 +740,7 @@ bones/10/name = "mixamorig_LeftHand"
 bones/10/parent = 9
 bones/10/rest = Transform( 1, 0, 7.45058e-009, -1.35525e-020, 1, -1.69407e-021, -7.45058e-009, 0, 1, 1.71915, 1.06546, 21.2863 )
 bones/10/enabled = true
-bones/10/bound_children = [ NodePath("Gun_Attachment") ]
+bones/10/bound_children = [  ]
 bones/11/name = "mixamorig_RightShoulder"
 bones/11/parent = 3
 bones/11/rest = Transform( 0.0843989, -1.69407e-021, -0.996432, 1.25005e-007, 1, 1.05881e-008, 0.996432, -1.25453e-007, 0.0843989, -7.34519, 12.4975, -1.16634 )
@@ -818,7 +820,7 @@ material/2 = ExtResource( 7 )
 material/3 = ExtResource( 8 )
 
 [node name="Gun_Attachment" type="BoneAttachment" parent="Hero/Armature"]
-transform = Transform( 0.562824, 0.823336, -0.0731061, -0.590082, 0.338283, -0.733054, -0.578819, 0.455718, 0.67623, 31.4652, 100.971, 20.012 )
+transform = Transform( 0.556186, 0.82698, -0.0822181, -0.593766, 0.32621, -0.735545, -0.581461, 0.457919, 0.672467, 30.8482, 100.653, 19.9998 )
 bone_name = "mixamorig_LeftHand"
 
 [node name="GunMesh" type="MeshInstance" parent="Hero/Armature/Gun_Attachment"]
@@ -842,7 +844,7 @@ anims/Shooting_Pose = SubResource( 6 )
 anims/Sitting_Idle = ExtResource( 12 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Hero"]
-tree_root = SubResource( 14 )
+tree_root = SubResource( 18 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/Dance/blend_amount = 0.0
@@ -853,4 +855,5 @@ parameters/Velocity/blend_amount = 0.0
 
 [node name="ShootAnimTimer" type="Timer" parent="."]
 one_shot = true
+
 [connection signal="timeout" from="ShootAnimTimer" to="." method="_on_ShootAnimTimer_timeout"]

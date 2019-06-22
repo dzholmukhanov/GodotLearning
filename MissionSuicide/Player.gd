@@ -15,6 +15,7 @@ const ROTATION_SPEED = 10
 
 func _ready():
 	camera = $Camera.get_global_transform()
+	Game.connect("won", self, "_on_won")
 
 func _process(delta):
 	$Hero/AnimationTree.set(
@@ -104,12 +105,22 @@ func track_mouse(delta):
 	
 func receive_damage():
 	Game.lost()
-	$Hero.visible = false
-	
-	
-	
-	
+	$Hero/AnimationTree.set("parameters/Death/blend_amount", 1)
 	
 
 func _on_ShootAnimTimer_timeout():
-		$Hero/AnimationTree.set("parameters/Shoot/blend_amount", 0)
+	$Hero/AnimationTree.set("parameters/Shoot/blend_amount", 0)
+
+func _on_won():
+	$Hero/AnimationTree.set("parameters/Dance/blend_amount", 1)
+	var meshTrans = $Hero.global_transform
+	var scale = $Hero.scale
+	var cameraPos = $Camera.global_transform.origin
+	cameraPos.y = meshTrans.origin.y
+	var rotTrans = meshTrans.looking_at(cameraPos, Vector3.UP)
+	var meshQuat = Quat(meshTrans.basis.orthonormalized())
+	var slerpQuat = meshQuat.slerp(rotTrans.basis, 1)
+	$Hero.global_transform = Transform(
+		slerpQuat, 
+		meshTrans.origin)
+	$Hero.scale = scale

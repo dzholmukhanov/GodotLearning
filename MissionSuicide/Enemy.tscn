@@ -479,7 +479,7 @@ animation = "Shoot"
 animation = "Shooting_Pose"
 
 [sub_resource type="AnimationNodeBlendTree" id=13]
-graph_offset = Vector2( -332.9, -195 )
+graph_offset = Vector2( -332.9, 249.5 )
 nodes/Death/node = SubResource( 6 )
 nodes/Death/position = Vector2( 460, 160 )
 nodes/Death_Anim/node = SubResource( 7 )
@@ -495,7 +495,7 @@ nodes/Shooting_Pose/position = Vector2( -20, 160 )
 nodes/Shooting_Pose_Anim/node = SubResource( 12 )
 nodes/Shooting_Pose_Anim/position = Vector2( -360, 280 )
 nodes/output/position = Vector2( 780, 160 )
-node_connections = [ "output", 0, "Death", "OneShot", 0, "Shooting_Pose", "OneShot", 1, "Shoot_Anim", "Death", 0, "OneShot", "Death", 1, "Death_Anim", "Shooting_Pose", 0, "Idle_Anim", "Shooting_Pose", 1, "Shooting_Pose_Anim" ]
+node_connections = [ "output", 0, "Death", "Death", 0, "OneShot", "Death", 1, "Death_Anim", "Shooting_Pose", 0, "Idle_Anim", "Shooting_Pose", 1, "Shooting_Pose_Anim", "OneShot", 0, "Shooting_Pose", "OneShot", 1, "Shoot_Anim" ]
 
 [node name="Enemy" type="KinematicBody" groups=[
 "Enemies",
@@ -505,7 +505,7 @@ Bullet = ExtResource( 2 )
 Gunfire = ExtResource( 3 )
 
 [node name="Collision" type="CollisionShape" parent="."]
-transform = Transform( 0.75, 0, 0, 0, 1.189, 0, 0, 0, 0.75, 0, 1.20324, 0 )
+transform = Transform( 0.979038, 0, 0, 0, 1.189, 0, 0, 0, 0.979038, 0, 1.20324, 0 )
 shape = SubResource( 1 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
@@ -514,6 +514,7 @@ transform = Transform( 1.16764, 0, 0, 0, 1.61842, 0, 0, 0, 1.16764, 0, 1.47207, 
 [node name="ProcessTimer" type="Timer" parent="."]
 
 [node name="ReactionTimer" type="Timer" parent="."]
+wait_time = 0.7
 one_shot = true
 
 [node name="Villain" type="Spatial" parent="."]
@@ -683,6 +684,7 @@ parameters/Shooting_Pose/blend_amount = 1.0
 
 [node name="BulletSpawn" type="Spatial" parent="Villain"]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 142.623, -119.272 )
+
 [connection signal="screen_entered" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]
 [connection signal="timeout" from="ProcessTimer" to="." method="_on_ProcessTimer_timeout"]
