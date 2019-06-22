@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/character/villain/Villain.mesh" type="ArrayMesh" id=1]
-[ext_resource path="res://assets/prefabs/P_Gun.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/materials/M_C_Dark_Coat.tres" type="Material" id=2]
+[ext_resource path="res://assets/materials/M_C_Skin.tres" type="Material" id=3]
+[ext_resource path="res://assets/prefabs/P_Gun.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -436,35 +438,35 @@ tracks/19/imported = false
 tracks/19/enabled = true
 tracks/19/keys = PoolRealArray( 0, 1, 2.22402, -10.4851, 12.1288, -0.10445, -0.235643, -0.00121015, 0.96621, 1, 0.999999, 1 )
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=4]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeOneShot" id=7]
+[sub_resource type="AnimationNodeOneShot" id=5]
 filters = [ "Armature:mixamorig_Head", "Armature:mixamorig_LeftArm", "Armature:mixamorig_LeftForeArm", "Armature:mixamorig_LeftShoulder", "Armature:mixamorig_Neck", "Armature:mixamorig_RightArm", "Armature:mixamorig_RightForeArm", "Armature:mixamorig_RightShoulder", "Armature:mixamorig_Spine", "Armature:mixamorig_Spine1", "Armature:mixamorig_Spine2" ]
 autorestart_random_delay = 6.53813e-037
 
-[sub_resource type="AnimationNodeAnimation" id=8]
+[sub_resource type="AnimationNodeAnimation" id=6]
 animation = "Shoot"
 
-[sub_resource type="AnimationNodeBlend2" id=5]
+[sub_resource type="AnimationNodeBlend2" id=7]
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "Shooting_Pose"
 
-[sub_resource type="AnimationNodeBlendTree" id=4]
+[sub_resource type="AnimationNodeBlendTree" id=9]
 graph_offset = Vector2( -403.9, 83.15 )
-nodes/Idle_Anim/node = SubResource( 6 )
+nodes/Idle_Anim/node = SubResource( 4 )
 nodes/Idle_Anim/position = Vector2( -360, 140 )
-nodes/OneShot/node = SubResource( 7 )
+nodes/OneShot/node = SubResource( 5 )
 nodes/OneShot/position = Vector2( 240, 160 )
-nodes/Shoot_Anim/node = SubResource( 8 )
+nodes/Shoot_Anim/node = SubResource( 6 )
 nodes/Shoot_Anim/position = Vector2( 0, 360 )
-nodes/Shooting_Pose/node = SubResource( 5 )
+nodes/Shooting_Pose/node = SubResource( 7 )
 nodes/Shooting_Pose/position = Vector2( -20, 160 )
-nodes/Shooting_Pose_Anim/node = SubResource( 9 )
+nodes/Shooting_Pose_Anim/node = SubResource( 8 )
 nodes/Shooting_Pose_Anim/position = Vector2( -360, 280 )
 nodes/output/position = Vector2( 500, 160 )
-node_connections = [ "output", 0, "OneShot", "OneShot", 0, "Shooting_Pose", "OneShot", 1, "Shoot_Anim", "Shooting_Pose", 0, "Idle_Anim", "Shooting_Pose", 1, "Shooting_Pose_Anim" ]
+node_connections = [ "output", 0, "OneShot", "Shooting_Pose", 0, "Idle_Anim", "Shooting_Pose", 1, "Shooting_Pose_Anim", "OneShot", 0, "Shooting_Pose", "OneShot", 1, "Shoot_Anim" ]
 
 [node name="Villain" type="Spatial"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
@@ -598,17 +600,17 @@ bones/24/bound_children = [  ]
 
 [node name="Villain" type="MeshInstance" parent="Armature"]
 mesh = ExtResource( 1 )
-material/0 = null
-material/1 = null
+material/0 = ExtResource( 2 )
+material/1 = ExtResource( 3 )
 material/2 = null
-material/3 = null
+material/3 = ExtResource( 2 )
 
 [node name="Gun_Attachment" type="BoneAttachment" parent="Armature"]
 editor/display_folded = true
 transform = Transform( 0.344728, 0.805073, -0.482718, -0.907475, 0.417353, 0.0479962, 0.240105, 0.421509, 0.874459, -6.64689, 131.217, 67.9659 )
 bone_name = "mixamorig_LeftHand"
 
-[node name="Gun" parent="Armature/Gun_Attachment" instance=ExtResource( 2 )]
+[node name="Gun" parent="Armature/Gun_Attachment" instance=ExtResource( 4 )]
 transform = Transform( 8.58805e-006, -99.7677, -6.81152, 100, 6.45288e-006, 3.73331e-007, 2.12141e-007, -6.81152, 99.7677, -5.60309, -3.73404, 20.5086 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -617,9 +619,8 @@ anims/Shoot = SubResource( 2 )
 anims/Shooting_Pose = SubResource( 3 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 4 )
+tree_root = SubResource( 9 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/OneShot/active = false
 parameters/Shooting_Pose/blend_amount = 1.0
-

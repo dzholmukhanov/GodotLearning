@@ -1,10 +1,10 @@
 [gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/character/hero/Hero.mesh" type="ArrayMesh" id=1]
-[ext_resource path="res://assets/materials/M_Paper.tres" type="Material" id=2]
-[ext_resource path="res://assets/materials/M_Paint_White.tres" type="Material" id=3]
-[ext_resource path="res://assets/materials/M_Wood.tres" type="Material" id=4]
-[ext_resource path="res://assets/materials/M_Paint_Black.tres" type="Material" id=5]
+[ext_resource path="res://assets/materials/M_C_Skin.tres" type="Material" id=2]
+[ext_resource path="res://assets/materials/M_C_Milky_Shirt.tres" type="Material" id=3]
+[ext_resource path="res://assets/materials/M_C_Brown_Pants.tres" type="Material" id=4]
+[ext_resource path="res://assets/materials/M_C_Brown_Shoes.tres" type="Material" id=5]
 [ext_resource path="res://assets/prefabs/P_Gun.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
@@ -614,7 +614,7 @@ nodes/Shoot_Anim/position = Vector2( -260, 220 )
 nodes/Velocity/node = SubResource( 9 )
 nodes/Velocity/position = Vector2( -260, 0 )
 nodes/output/position = Vector2( 240, 0 )
-node_connections = [ "output", 0, "Shoot", "Velocity", 0, "Idle_Anim", "Velocity", 1, "Running_Anim", "Shoot", 0, "Velocity", "Shoot", 1, "Shoot_Anim" ]
+node_connections = [ "output", 0, "Shoot", "Shoot", 0, "Velocity", "Shoot", 1, "Shoot_Anim", "Velocity", 0, "Idle_Anim", "Velocity", 1, "Running_Anim" ]
 
 [node name="Hero" type="Spatial"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
@@ -755,7 +755,7 @@ material/3 = ExtResource( 5 )
 
 [node name="Gun_Attachment" type="BoneAttachment" parent="Armature"]
 editor/display_folded = true
-transform = Transform( 0.554153, 0.830036, -0.0628604, -0.572802, 0.325441, -0.752319, -0.603996, 0.452907, 0.655792, 30.8769, 99.6493, 19.1301 )
+transform = Transform( 0.55669, 0.826704, -0.0815814, -0.594482, 0.327858, -0.734233, -0.580247, 0.45724, 0.673977, 30.9266, 100.752, 20.0697 )
 bone_name = "mixamorig_LeftHand"
 
 [node name="Gun" parent="Armature/Gun_Attachment" instance=ExtResource( 6 )]
@@ -773,4 +773,3 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/Shoot/active = false
 parameters/Velocity/blend_amount = 0.0
-

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/materials/M_Wall_Red.tres" type="Material" id=1]
 [ext_resource path="res://assets/prefabs/P_Window_05.tscn" type="PackedScene" id=2]
@@ -6,7 +6,10 @@
 
 [sub_resource type="CubeMesh" id=1]
 
-[sub_resource type="CubeMesh" id=2]
+[sub_resource type="ConvexPolygonShape" id=2]
+points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
+
+[sub_resource type="CubeMesh" id=3]
 
 [node name="Spatial" type="Spatial"]
 
@@ -14,6 +17,11 @@
 transform = Transform( 9, 0, 0, 0, 15, 0, 0, 0, 9, 0, 15, 0 )
 mesh = SubResource( 1 )
 material/0 = ExtResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
+shape = SubResource( 2 )
 
 [node name="Windows_Side_01" type="Spatial" parent="."]
 editor/display_folded = true
@@ -169,112 +177,112 @@ editor/display_folded = true
 
 [node name="Side_Block" type="MeshInstance" parent="Side_Blocks"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 0.341677, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block3" type="MeshInstance" parent="Side_Blocks"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 1.84348, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block6" type="MeshInstance" parent="Side_Blocks"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 3.35326, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block7" type="MeshInstance" parent="Side_Blocks"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 4.84881, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block10" type="MeshInstance" parent="Side_Blocks"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 6.35827, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block12" type="MeshInstance" parent="Side_Blocks"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 7.83911, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block13" type="MeshInstance" parent="Side_Blocks"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 9.35529, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block16" type="MeshInstance" parent="Side_Blocks"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 10.8643, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block17" type="MeshInstance" parent="Side_Blocks"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 12.3739, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block20" type="MeshInstance" parent="Side_Blocks"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 13.8868, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block21" type="MeshInstance" parent="Side_Blocks"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 15.4286, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block2" type="MeshInstance" parent="Side_Blocks"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 1.0935, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block4" type="MeshInstance" parent="Side_Blocks"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 2.5953, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block5" type="MeshInstance" parent="Side_Blocks"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 4.10508, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block8" type="MeshInstance" parent="Side_Blocks"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 5.60063, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block9" type="MeshInstance" parent="Side_Blocks"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 7.11009, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block11" type="MeshInstance" parent="Side_Blocks"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 8.59094, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block14" type="MeshInstance" parent="Side_Blocks"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 10.1071, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block15" type="MeshInstance" parent="Side_Blocks"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 11.6161, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block18" type="MeshInstance" parent="Side_Blocks"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 13.1257, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block19" type="MeshInstance" parent="Side_Blocks"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 14.6386, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block22" type="MeshInstance" parent="Side_Blocks"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 16.1805, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Blocks2" type="Spatial" parent="."]
@@ -283,112 +291,112 @@ transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 0, 0,
 
 [node name="Side_Block" type="MeshInstance" parent="Side_Blocks2"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 0.341677, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block3" type="MeshInstance" parent="Side_Blocks2"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 1.84348, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block6" type="MeshInstance" parent="Side_Blocks2"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 3.35326, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block7" type="MeshInstance" parent="Side_Blocks2"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 4.84881, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block10" type="MeshInstance" parent="Side_Blocks2"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 6.35827, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block12" type="MeshInstance" parent="Side_Blocks2"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 7.83911, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block13" type="MeshInstance" parent="Side_Blocks2"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 9.35529, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block16" type="MeshInstance" parent="Side_Blocks2"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 10.8643, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block17" type="MeshInstance" parent="Side_Blocks2"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 12.3739, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block20" type="MeshInstance" parent="Side_Blocks2"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 13.8868, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block21" type="MeshInstance" parent="Side_Blocks2"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 15.4286, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block2" type="MeshInstance" parent="Side_Blocks2"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 1.0935, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block4" type="MeshInstance" parent="Side_Blocks2"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 2.5953, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block5" type="MeshInstance" parent="Side_Blocks2"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 4.10508, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block8" type="MeshInstance" parent="Side_Blocks2"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 5.60063, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block9" type="MeshInstance" parent="Side_Blocks2"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 7.11009, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block11" type="MeshInstance" parent="Side_Blocks2"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 8.59094, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block14" type="MeshInstance" parent="Side_Blocks2"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 10.1071, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block15" type="MeshInstance" parent="Side_Blocks2"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 11.6161, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block18" type="MeshInstance" parent="Side_Blocks2"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 13.1257, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block19" type="MeshInstance" parent="Side_Blocks2"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 14.6386, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block22" type="MeshInstance" parent="Side_Blocks2"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 16.1805, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Blocks3" type="Spatial" parent="."]
@@ -397,112 +405,112 @@ transform = Transform( 1.31134e-007, 0, -1, 0, 1, 0, 1, 0, 1.31134e-007, 0, 0, 0
 
 [node name="Side_Block" type="MeshInstance" parent="Side_Blocks3"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 0.341677, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block3" type="MeshInstance" parent="Side_Blocks3"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 1.84348, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block6" type="MeshInstance" parent="Side_Blocks3"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 3.35326, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block7" type="MeshInstance" parent="Side_Blocks3"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 4.84881, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block10" type="MeshInstance" parent="Side_Blocks3"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 6.35827, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block12" type="MeshInstance" parent="Side_Blocks3"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 7.83911, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block13" type="MeshInstance" parent="Side_Blocks3"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 9.35529, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block16" type="MeshInstance" parent="Side_Blocks3"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 10.8643, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block17" type="MeshInstance" parent="Side_Blocks3"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 12.3739, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block20" type="MeshInstance" parent="Side_Blocks3"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 13.8868, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block21" type="MeshInstance" parent="Side_Blocks3"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 15.4286, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block2" type="MeshInstance" parent="Side_Blocks3"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 1.0935, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block4" type="MeshInstance" parent="Side_Blocks3"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 2.5953, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block5" type="MeshInstance" parent="Side_Blocks3"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 4.10508, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block8" type="MeshInstance" parent="Side_Blocks3"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 5.60063, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block9" type="MeshInstance" parent="Side_Blocks3"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 7.11009, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block11" type="MeshInstance" parent="Side_Blocks3"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 8.59094, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block14" type="MeshInstance" parent="Side_Blocks3"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 10.1071, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block15" type="MeshInstance" parent="Side_Blocks3"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 11.6161, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block18" type="MeshInstance" parent="Side_Blocks3"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 13.1257, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block19" type="MeshInstance" parent="Side_Blocks3"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 14.6386, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block22" type="MeshInstance" parent="Side_Blocks3"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 16.1805, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Blocks4" type="Spatial" parent="."]
@@ -511,111 +519,110 @@ transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 0,
 
 [node name="Side_Block" type="MeshInstance" parent="Side_Blocks4"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 0.341677, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block3" type="MeshInstance" parent="Side_Blocks4"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 1.84348, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block6" type="MeshInstance" parent="Side_Blocks4"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 3.35326, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block7" type="MeshInstance" parent="Side_Blocks4"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 4.84881, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block10" type="MeshInstance" parent="Side_Blocks4"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 6.35827, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block12" type="MeshInstance" parent="Side_Blocks4"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 7.83911, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block13" type="MeshInstance" parent="Side_Blocks4"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 9.35529, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block16" type="MeshInstance" parent="Side_Blocks4"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 10.8643, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block17" type="MeshInstance" parent="Side_Blocks4"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 12.3739, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block20" type="MeshInstance" parent="Side_Blocks4"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 13.8868, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block21" type="MeshInstance" parent="Side_Blocks4"]
 transform = Transform( 0.65, 0, 0, 0, 0.35, 0, 0, 0, 0.65, -8.44104, 15.4286, -8.44124 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block2" type="MeshInstance" parent="Side_Blocks4"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 1.0935, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block4" type="MeshInstance" parent="Side_Blocks4"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 2.5953, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block5" type="MeshInstance" parent="Side_Blocks4"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 4.10508, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block8" type="MeshInstance" parent="Side_Blocks4"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 5.60063, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block9" type="MeshInstance" parent="Side_Blocks4"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 7.11009, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block11" type="MeshInstance" parent="Side_Blocks4"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 8.59094, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block14" type="MeshInstance" parent="Side_Blocks4"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 10.1071, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block15" type="MeshInstance" parent="Side_Blocks4"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 11.6161, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block18" type="MeshInstance" parent="Side_Blocks4"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 13.1257, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block19" type="MeshInstance" parent="Side_Blocks4"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 14.6386, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Side_Block22" type="MeshInstance" parent="Side_Blocks4"]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -8.69867, 16.1805, -8.71895 )
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
-
