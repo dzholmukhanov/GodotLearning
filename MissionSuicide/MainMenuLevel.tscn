@@ -75,7 +75,7 @@ size = 32
 font_data = ExtResource( 29 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 72
+size = 64
 outline_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
 font_data = ExtResource( 30 )
 
@@ -1185,7 +1185,6 @@ anchor_bottom = 1.0
 color = Color( 0.0509804, 0.117647, 0.160784, 1 )
 
 [node name="GodotImgRect" type="TextureRect" parent="MenuUI"]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1197,7 +1196,6 @@ margin_bottom = 216.0
 texture = ExtResource( 32 )
 
 [node name="BdRect2" type="ColorRect" parent="MenuUI"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.0509804, 0.117647, 0.160784, 1 )

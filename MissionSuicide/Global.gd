@@ -28,12 +28,14 @@ func start():
 	state = PLAYING
 	var enemies = get_tree().get_nodes_in_group("Enemies")
 	enemies_cnt = enemies.size()
-	bullets_cnt = 100
+	bullets_cnt = enemies_cnt
 	
 func is_paused():
 	return state == PAUSED
 func is_playing():
 	return state == PLAYING
+func is_won():
+	return state == WON
 
 func pause():
 	if state == PLAYING:

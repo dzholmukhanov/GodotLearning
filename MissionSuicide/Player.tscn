@@ -639,7 +639,7 @@ animation = "Sitting_Idle"
 [sub_resource type="AnimationNodeBlend2" id=17]
 
 [sub_resource type="AnimationNodeBlendTree" id=18]
-graph_offset = Vector2( -81, -38.5 )
+graph_offset = Vector2( 0, -124 )
 nodes/Dance/node = SubResource( 7 )
 nodes/Dance/position = Vector2( 800, -20 )
 nodes/Dance_Anim/node = SubResource( 8 )
@@ -663,7 +663,7 @@ nodes/Sitting_Anim/position = Vector2( 360, 180 )
 nodes/Velocity/node = SubResource( 17 )
 nodes/Velocity/position = Vector2( -260, 0 )
 nodes/output/position = Vector2( 1020, -20 )
-node_connections = [ "output", 0, "Dance", "Shoot", 0, "Velocity", "Shoot", 1, "Shoot_Anim", "Death", 0, "Shoot", "Death", 1, "Death_Anim", "Dance", 0, "Sitting", "Dance", 1, "Dance_Anim", "Velocity", 0, "Idle_Anim", "Velocity", 1, "Running_Anim", "Sitting", 0, "Death", "Sitting", 1, "Sitting_Anim" ]
+node_connections = [ "output", 0, "Dance", "Death", 0, "Shoot", "Death", 1, "Death_Anim", "Shoot", 0, "Velocity", "Shoot", 1, "Shoot_Anim", "Dance", 0, "Sitting", "Dance", 1, "Dance_Anim", "Sitting", 0, "Death", "Sitting", 1, "Sitting_Anim", "Velocity", 0, "Idle_Anim", "Velocity", 1, "Running_Anim" ]
 
 [sub_resource type="Animation" id=19]
 resource_name = "VictoryZoom"
@@ -690,16 +690,15 @@ Bullet = ExtResource( 2 )
 Gunfire = ExtResource( 3 )
 
 [node name="Collision" type="CollisionShape" parent="."]
-transform = Transform( 0.75, 0, 0, 0, 1.18863, 0, 0, 0, 0.75, 0, 1.18989, 0 )
+transform = Transform( 0.75, 0, 0, 0, 1.18863, 0, 0, 0, 0.75, 0, 1.19187, 0 )
 shape = SubResource( 1 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -4.37114e-008, -0.258819, 0.965926, 0, 0.965926, 0.258819, -1, 1.13133e-008, -4.2222e-008, 13, 6, 0 )
-fov = 62.3997
+fov = 63.96
 far = 500.0
 
 [node name="Hero" type="Spatial" parent="."]
-editor/display_folded = true
 transform = Transform( 0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, 0, 0, 0 )
 
 [node name="Armature" type="Skeleton" parent="Hero"]
@@ -758,7 +757,7 @@ bones/10/name = "mixamorig_LeftHand"
 bones/10/parent = 9
 bones/10/rest = Transform( 1, 0, 7.45058e-009, -1.35525e-020, 1, -1.69407e-021, -7.45058e-009, 0, 1, 1.71915, 1.06546, 21.2863 )
 bones/10/enabled = true
-bones/10/bound_children = [ NodePath("Gun_Attachment") ]
+bones/10/bound_children = [  ]
 bones/11/name = "mixamorig_RightShoulder"
 bones/11/parent = 3
 bones/11/rest = Transform( 0.0843989, -1.69407e-021, -0.996432, 1.25005e-007, 1, 1.05881e-008, 0.996432, -1.25453e-007, 0.0843989, -7.34519, 12.4975, -1.16634 )
@@ -838,7 +837,7 @@ material/2 = ExtResource( 7 )
 material/3 = ExtResource( 8 )
 
 [node name="Gun_Attachment" type="BoneAttachment" parent="Hero/Armature"]
-transform = Transform( 0.56006, 0.82545, -0.0704567, -0.58473, 0.333617, -0.739453, -0.586875, 0.455337, 0.66951, 31.2836, 100.53, 19.7233 )
+transform = Transform( 0.55791, 0.827196, -0.0669528, -0.579754, 0.33075, -0.74464, -0.593819, 0.454258, 0.6641, 31.1607, 100.208, 19.4969 )
 bone_name = "mixamorig_LeftHand"
 
 [node name="GunMesh" type="MeshInstance" parent="Hero/Armature/Gun_Attachment"]
