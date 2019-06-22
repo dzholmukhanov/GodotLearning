@@ -89,7 +89,7 @@ func track_mouse(delta):
 		var scale = $Mesh.scale
 		hitPos.y = meshTrans.origin.y
 		var rotTrans = meshTrans.looking_at(hitPos, Vector3.UP)
-		var meshQuat = Quat(meshTrans.basis)
+		var meshQuat = Quat(meshTrans.basis.orthonormalized())
 		var slerpQuat = meshQuat.slerp(rotTrans.basis, delta * ROTATION_SPEED)
 		$Mesh.global_transform = Transform(
 			slerpQuat, 

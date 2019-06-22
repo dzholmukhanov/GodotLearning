@@ -23,7 +23,7 @@ func _process(delta):
 		var plrPos = player.transform.origin
 		plrPos.y = meshTrans.origin.y
 		var rotTrans = meshTrans.looking_at(plrPos, Vector3.UP)
-		var meshQuat = Quat(meshTrans.basis)
+		var meshQuat = Quat(meshTrans.basis.orthonormalized())
 		var slerpQuat = meshQuat.slerp(rotTrans.basis, delta * ROTATION_SPEED)
 		$Mesh.global_transform = Transform(
 			slerpQuat, 
