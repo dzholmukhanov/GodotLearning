@@ -10,4 +10,4 @@ func _on_won():
 	$RestartTimer.start()
 
 func _on_RestartTimer_timeout():
-	get_tree().change_scene("IntroLevel.tscn")
+	get_tree().change_scene("MainMenuLevel.tscn")

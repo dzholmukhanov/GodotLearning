@@ -1,6 +1,6 @@
 extends Node
 
-const START = 0
+const MENU = 0
 const PLAYING = 1
 const PAUSED = 2
 const WON = 3
@@ -19,10 +19,12 @@ func _ready():
 	pass
 	
 func _process(delta):
-#	print_debug(enemies_cnt)
 	pass
 	
 func restart():
+	state = MENU
+	
+func start():
 	state = PLAYING
 	var enemies = get_tree().get_nodes_in_group("Enemies")
 	enemies_cnt = enemies.size()

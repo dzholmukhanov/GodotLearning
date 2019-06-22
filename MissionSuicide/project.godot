@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="MissionSuicide"
+config/name="Mob Glitch"
 run/main_scene="res://MainMenuLevel.tscn"
 config/icon="res://icon.png"
 
@@ -25,7 +25,6 @@ Game="*res://Global.tscn"
 
 [debug]
 
-settings/fps/force_fps=60
 settings/stdout/print_fps=true
 
 [input]
@@ -70,5 +69,10 @@ win={
 [rendering]
 
 quality/driver/fallback_to_gles2=true
+quality/reflections/texture_array_reflections=false
+quality/reflections/high_quality_ggx=false
+quality/subsurface_scattering/quality=0
+quality/voxel_cone_tracing/high_quality=false
 quality/filters/msaa=3
+quality/depth/hdr=false
 environment/default_environment="res://default_env.tres"
