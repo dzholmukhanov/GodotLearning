@@ -18,12 +18,12 @@ _global_script_class_icons={
 config/name="Mob Glitch"
 run/main_scene="res://MainMenuLevel.tscn"
 run/disable_stdout=true
-run/disable_stderr=true
 config/icon="res://icon.png"
 
 [autoload]
 
 Game="*res://Global.tscn"
+Transition="*res://Transition.tscn"
 
 [display]
 
