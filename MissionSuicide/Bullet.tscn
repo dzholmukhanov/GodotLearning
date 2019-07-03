@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Bullet.gd" type="Script" id=1]
+[ext_resource path="res://assets/sounds/gun_shot.wav" type="AudioStream" id=2]
 
 [sub_resource type="CapsuleMesh" id=1]
 
 [sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 1, 0.654902, 0, 1 )
+flags_unshaded = true
+albedo_color = Color( 1, 0.984314, 0, 1 )
 
 [sub_resource type="CapsuleShape" id=3]
 
@@ -20,5 +22,9 @@ material/0 = SubResource( 2 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.121, 0, 0, 0 )
 shape = SubResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -8.0
 
 [connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]

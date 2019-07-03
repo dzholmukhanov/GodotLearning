@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/prefabs/P_Skirt_01.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/prefabs/P_Door_03.tscn" type="PackedScene" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://assets/materials/M_Wall_Red.tres" type="Material" id=6]
 
 [sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="ConvexPolygonShape" id=2]
+points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
 
 [node name="Spatial" type="Spatial"]
 
@@ -124,3 +127,7 @@ transform = Transform( 8, 0, 0, 0, 8, 0, 0, 0, 14.725, 0.964314, 8, 1.69774 )
 mesh = SubResource( 1 )
 material/0 = ExtResource( 6 )
 
+[node name="StaticBody" type="StaticBody" parent="MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
+shape = SubResource( 2 )

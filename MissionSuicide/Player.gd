@@ -15,9 +15,12 @@ const ROTATION_SPEED = 10
 
 func _ready():
 	camera = $Camera.get_global_transform()
+	Game.connect("won", self, "_on_won")
 
 func _process(delta):
-	pass
+	$Hero/AnimationTree.set(
+		"parameters/Velocity/blend_amount", 
+		1 if (velocity * Vector3(1, 0, 1)).length_squared() > 1 else 0)
 
 func _physics_process(delta):
 	if Game.is_paused() or Game.is_playing():
@@ -34,6 +37,8 @@ func _physics_process(delta):
 			shoot()
 		if (Input.is_action_just_pressed("pause")):
 			pause()
+		if (Input.is_action_just_pressed("win")):
+			Game.won()
 	
 		dir.y = 0
 		dir = dir.normalized()
@@ -55,18 +60,22 @@ func _physics_process(delta):
 		track_mouse(delta)
 	
 func shoot():
-	var bullet = Bullet.instance()
-	bullet.transform = $Mesh/BulletSpawn.get_global_transform()
-	bullet.set_scale(Vector3(1, 1, 1))
-	bullet.is_player_bullet = true
-	get_parent().add_child(bullet)
-	
-	var fire = Gunfire.instance()
-	fire.transform = $Mesh/PistolMesh/EmitterSpawn.get_global_transform()
-	fire.set_scale(Vector3(1, 1, 1))
-	get_parent().add_child(fire)
-	fire.emit()
-	
+	if Game.shoot() or Game.is_paused():
+		var bullet = Bullet.instance()
+		bullet.transform = $Hero/Armature/BulletSpawn.get_global_transform()
+		bullet.set_scale(Vector3(1, 1, 1))
+		bullet.is_player_bullet = true
+		get_parent().add_child(bullet)
+		
+		var fire = Gunfire.instance()
+		fire.transform = $Hero/Armature/Gun_Attachment/EmitterSpawn.get_global_transform()
+		fire.set_scale(Vector3(1, 1, 1))
+		fire.rotate(Vector3.UP, PI)
+		get_parent().add_child(fire)
+		fire.emit()
+		
+		$Hero/AnimationTree.set("parameters/Shoot/blend_amount", 1)
+		$ShootAnimTimer.start()
 	
 func pause():
 	if Game.is_playing():
@@ -80,30 +89,40 @@ func track_mouse(delta):
 	var from = cam.project_ray_origin(mousePos)
 	var to = from + cam.project_ray_normal(mousePos) * CAMERA_RAY_LENGTH
 	var space_state = get_world().direct_space_state
-	var hit = space_state.intersect_ray(from, to)
+	var hit = space_state.intersect_ray(from, to, [], 1)
 	var hitPos = hit.get("position")
 	if hitPos != null:
-		var meshTrans = $Mesh.global_transform
+		var meshTrans = $Hero.global_transform
+		var scale = $Hero.scale
 		hitPos.y = meshTrans.origin.y
 		var rotTrans = meshTrans.looking_at(hitPos, Vector3.UP)
-		var meshQuat = Quat(meshTrans.basis)
+		var meshQuat = Quat(meshTrans.basis.orthonormalized())
 		var slerpQuat = meshQuat.slerp(rotTrans.basis, delta * ROTATION_SPEED)
-		$Mesh.global_transform = Transform(
+		$Hero.global_transform = Transform(
 			slerpQuat, 
 			meshTrans.origin)
+		$Hero.scale = scale
 	
 func receive_damage():
 	Game.lost()
-	$Mesh.visible = false
-	
-	
-	
-	
-	
-	
-	
+	$Hero/AnimationTree.set("parameters/Death/blend_amount", 1)
+	$AudioStreamPlayer.play()
 	
 
-func _on_FireTimer_timeout():
-#	$Mesh/PistolMesh/Fire.visible = false
-	pass
+func _on_ShootAnimTimer_timeout():
+	$Hero/AnimationTree.set("parameters/Shoot/blend_amount", 0)
+
+func _on_won():
+	$Hero/AnimationTree.set("parameters/Dance/blend_amount", 1)
+	var meshTrans = $Hero.global_transform
+	var scale = $Hero.scale
+	var cameraPos = $Camera.global_transform.origin
+	cameraPos.y = meshTrans.origin.y
+	var rotTrans = meshTrans.looking_at(cameraPos, Vector3.UP)
+	var meshQuat = Quat(meshTrans.basis.orthonormalized())
+	var slerpQuat = meshQuat.slerp(rotTrans.basis, 1)
+	$Hero.global_transform = Transform(
+		slerpQuat, 
+		meshTrans.origin)
+	$Hero.scale = scale
+	$CameraAnimationPlayer.play("VictoryZoom")

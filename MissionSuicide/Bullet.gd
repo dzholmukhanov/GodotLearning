@@ -5,13 +5,15 @@ var velocity
 var lifetime
 var is_player_bullet
 
-const SPEED = 30
-const TIMEOUT = 2
+const SPEED = 20
+const TIMEOUT = 5
 
 func _ready():
 	direction = -transform.basis.z
 	velocity = direction * SPEED
 	lifetime = 0
+	$AudioStreamPlayer.pitch_scale = rand_range(0.75, 1.25)
+	$AudioStreamPlayer.play()
 
 func _process(delta):
 	if Game.is_playing():
@@ -25,6 +27,6 @@ func _on_Bullet_body_entered(body):
 		if ((is_player_bullet and not body.is_in_group("Player")) 
 		or (not is_player_bullet and not body.is_in_group("Enemies"))):
 			if body.is_in_group("Player") or body.is_in_group("Enemies"):
-#				body.receive_damage()
-				pass
+				body.receive_damage()
+#				pass
 			queue_free()

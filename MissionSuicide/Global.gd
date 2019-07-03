@@ -1,13 +1,14 @@
 extends Node
 
-const START = 0
+const MENU = 0
 const PLAYING = 1
 const PAUSED = 2
 const WON = 3
 const LOST = 4
 
 var state
-var enemies_cnt
+var enemies_cnt = 0
+var bullets_cnt = 0
 
 signal paused
 signal resumed
@@ -18,18 +19,23 @@ func _ready():
 	pass
 	
 func _process(delta):
-#	print_debug(enemies_cnt)
 	pass
 	
 func restart():
+	state = MENU
+	
+func start():
 	state = PLAYING
 	var enemies = get_tree().get_nodes_in_group("Enemies")
 	enemies_cnt = enemies.size()
+	bullets_cnt = enemies_cnt
 	
 func is_paused():
 	return state == PAUSED
 func is_playing():
 	return state == PLAYING
+func is_won():
+	return state == WON
 
 func pause():
 	if state == PLAYING:
@@ -50,8 +56,24 @@ func won():
 	if state == PLAYING:
 		state = WON
 		emit_signal("won")
+		play_victory_music()
 
 func enemy_died():
 	enemies_cnt -= 1
 	if enemies_cnt == 0:
 		won()
+		
+func shoot():
+	if bullets_cnt > 0:
+		if is_playing():
+			bullets_cnt = bullets_cnt - 1
+		return true
+	return false
+	
+func play_main_music():
+	$VictoryAudioPlayer.stop()
+	$MainAudioPlayer.play(0)
+
+func play_victory_music():
+	$MainAudioPlayer.stop()
+	$VictoryAudioPlayer.play(0)

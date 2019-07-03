@@ -1,21 +1,19 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://PauseUI.gd" type="Script" id=1]
-[ext_resource path="res://fonts/noir/NoirStd-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://fonts/noir/Noir/NoirStd-SemiBoldItalic.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://fonts/noir/Noir/NoirPro-Medium.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 32
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
+size = 32
 font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=4]
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=1]
-size = 36
-font_data = ExtResource( 3 )
 
 [node name="PauseUI" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -29,48 +27,39 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.145098 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ParentControl"]
-margin_left = 355.0
-margin_top = 297.0
-margin_right = 654.0
-margin_bottom = 426.0
-
-[node name="ResumeBtn" type="Button" parent="ParentControl/VBoxContainer"]
-margin_right = 299.0
-margin_bottom = 23.0
-custom_fonts/font = SubResource( 2 )
-text = "RESUME"
-
-[node name="NewGameBtn" type="Button" parent="ParentControl/VBoxContainer"]
-margin_top = 27.0
-margin_right = 299.0
-margin_bottom = 50.0
-custom_fonts/font = SubResource( 3 )
-text = "NEW GAME"
-
-[node name="QuitBtn" type="Button" parent="ParentControl/VBoxContainer"]
-margin_top = 54.0
-margin_right = 299.0
-margin_bottom = 77.0
-custom_fonts/font = SubResource( 4 )
-text = "QUIT"
-
-[node name="PauseLbl" type="Label" parent="ParentControl"]
+[node name="ResumeBtn" type="Button" parent="ParentControl"]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -159.5
-margin_top = -80.5
-margin_right = 139.5
-margin_bottom = -43.5
-custom_fonts/font = SubResource( 1 )
-text = "pause"
-align = 1
-valign = 1
-autowrap = true
-uppercase = true
+margin_left = -125.0
+margin_right = 125.0
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.968627, 0.286275, 0.286275, 1 )
+text = "RESUME"
+flat = true
 
-[connection signal="pressed" from="ParentControl/VBoxContainer/ResumeBtn" to="." method="_on_ResumeBtn_pressed"]
-[connection signal="pressed" from="ParentControl/VBoxContainer/NewGameBtn" to="." method="_on_NewGameBtn_pressed"]
-[connection signal="pressed" from="ParentControl/VBoxContainer/QuitBtn" to="." method="_on_QuitBtn_pressed"]
+[node name="NewGameBtn" type="Button" parent="ParentControl"]
+margin_right = 250.0
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.968627, 0.286275, 0.286275, 1 )
+text = "NEW GAME"
+flat = true
+
+[node name="QuitBtn" type="Button" parent="ParentControl"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -200.49
+margin_right = 49.5115
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.968627, 0.286275, 0.286275, 1 )
+text = "QUIT"
+flat = true
+
+[connection signal="pressed" from="ParentControl/ResumeBtn" to="." method="_on_ResumeBtn_pressed"]
+[connection signal="pressed" from="ParentControl/NewGameBtn" to="." method="_on_NewGameBtn_pressed"]
+[connection signal="pressed" from="ParentControl/QuitBtn" to="." method="_on_QuitBtn_pressed"]

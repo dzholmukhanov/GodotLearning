@@ -14,7 +14,7 @@ func _ready():
 
 
 func _on_NewGameBtn_pressed():
-	get_tree().change_scene("MainLevel.tscn")
+	get_tree().change_scene("UrbanLevel.tscn")
 
 
 func _on_QuitBtn_pressed():

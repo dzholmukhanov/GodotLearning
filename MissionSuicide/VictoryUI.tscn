@@ -1,38 +1,14 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://VictoryUI.gd" type="Script" id=1]
-[ext_resource path="res://fonts/noir/Noir/NoirStd-SemiBoldItalic.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/noir/Noir/NoirPro-Medium.ttf" type="DynamicFontData" id=2]
 
-[sub_resource type="DynamicFont" id=3]
-size = 40
+[sub_resource type="DynamicFont" id=1]
+size = 72
 font_data = ExtResource( 2 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 length = 2.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("ParentControl/VictoryLbl:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 185.5, 191.5 ), Vector2( 415.5, 191.5 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("ParentControl/VictoryLbl:custom_colors/font_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
 
 [node name="VictoryUI" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -51,20 +27,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -96.5
-margin_top = -108.5
-margin_right = 91.5
-margin_bottom = -67.5
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "victory!"
+margin_left = -156.5
+margin_top = -150.0
+margin_right = 156.501
+margin_bottom = -77.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.968627, 0.286275, 0.286275, 1 )
+text = "victory"
 uppercase = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/FadeIn = SubResource( 4 )
+anims/FadeIn = SubResource( 2 )
 
 [node name="RestartTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 60.0
 one_shot = true
 
 [connection signal="timeout" from="RestartTimer" to="." method="_on_RestartTimer_timeout"]
