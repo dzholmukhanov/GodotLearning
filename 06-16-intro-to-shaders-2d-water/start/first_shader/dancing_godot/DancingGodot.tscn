@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://first_shader/dancing_godot/dancing_godot_material.tres" type="Material" id=1]
+[ext_resource path="res://first_shader/dancing_godot/gobot.png" type="Texture" id=2]
+
+[node name="DancingGodot" type="TextureRect"]
+material = ExtResource( 1 )
+margin_left = 472.947
+margin_top = 226.0
+margin_right = 600.947
+margin_bottom = 354.0
+texture = ExtResource( 2 )
+expand = true
