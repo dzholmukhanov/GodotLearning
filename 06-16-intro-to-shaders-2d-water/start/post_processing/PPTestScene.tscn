@@ -1,0 +1,98 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://post_processing/PPTestScene.gd" type="Script" id=1]
+[ext_resource path="res://post_processing/tv_advanced.shader" type="Shader" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.564706, 0.32549, 0.0745098, 1 )
+
+[sub_resource type="PlaneMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.270588, 0.933333, 0, 1 )
+
+[sub_resource type="CubeMesh" id=4]
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 2 )
+shader_param/vertJerkOpt = 1.0
+shader_param/vertMovementOpt = 1.0
+shader_param/bottomStaticOpt = 1.0
+shader_param/scalinesOpt = 1.0
+shader_param/rgbOffsetOpt = 1.0
+shader_param/horzFuzzOpt = 1.0
+
+[sub_resource type="Animation" id=6]
+resource_name = "Camera move"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.17484, 1.90786, 4.40294 ), Vector3( 3.53687, 1.90786, 0.660817 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -23.2385, 56.3559, -2.84705 ) ]
+}
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 5.46448, 0, 0, 0, 1, 0, 0, 0, 5.46448, 0, 0.0673853, 0 )
+material_override = SubResource( 1 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 0.3427, 0, -0.213077, 0, 0.403541, 0, 0.213077, 0, 0.3427, 0.767895, 0.604515, 0 )
+material_override = SubResource( 3 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="."]
+transform = Transform( -0.0262856, 0, -0.402684, 0, 0.403541, 0, 0.402684, 0, -0.0262856, -1.56383, 0.604515, -1.82128 )
+material_override = SubResource( 3 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="."]
+transform = Transform( 0.313095, 0, 0.254591, 0, 0.403541, 0, -0.254591, 0, 0.313095, -1.80766, 0.604515, 0.760249 )
+material_override = SubResource( 3 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="MeshInstance5" type="MeshInstance" parent="."]
+transform = Transform( 0.0232008, 0, -0.402873, 0, 0.403541, 0, 0.402873, 0, 0.0232008, 2.87774, 0.604515, -1.6729 )
+material_override = SubResource( 3 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource( 5 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.569663, -0.300545, 0.764956, -0.0456402, 0.917736, 0.394559, -0.82061, -0.259678, 0.509083, 3.53687, 1.90786, 0.660817 )
+current = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Camera move"
+"anims/Camera move" = SubResource( 6 )
